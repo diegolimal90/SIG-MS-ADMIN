@@ -1,4 +1,4 @@
-package br.com.sig.msadmin.core.entity;
+package br.com.sig.msadmin.entrypoint.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class ProfissionalEntity {
-	
-	private Long id;
+@NoArgsConstructor
+public class UnidadeHttpModel {
+	private Integer id;
 }
