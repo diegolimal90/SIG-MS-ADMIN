@@ -8,12 +8,34 @@ public class UnidadeHttpModelMapper {
 	public static UnidadeEntity to(UnidadeHttpModel httpModel) {
 		return UnidadeEntity.builder()
 				.id(httpModel.getId())
+				.tipo(httpModel.getTipo())
+				.nome(httpModel.getNome())
+				.cep(httpModel.getCep())
+				.tipoLogradouro(httpModel.getTipoLogradouro())
+				.logradouro(httpModel.getLogradouro())
+				.numero(httpModel.getNumero())
+				.complemento(httpModel.getComplemento())
+				.regiao(httpModel.getRegiao())
+				.bairro(httpModel.getBairro())
+				.cidade(httpModel.getCidade())
+				.estado(httpModel.getEstado())
 				.build();
 	}
 
 	public static UnidadeHttpModel from(UnidadeEntity entity) {
 		return UnidadeHttpModel.builder()
 				.id(entity.getId())
+				.tipo(entity.getTipo())
+				.nome(entity.getNome())
+				.cep(entity.getCep())
+				.tipoLogradouro(entity.getTipoLogradouro())
+				.logradouro(entity.getLogradouro())
+				.numero(entity.getNumero())
+				.complemento(entity.getComplemento())
+				.regiao(entity.getRegiao())
+				.bairro(entity.getBairro())
+				.cidade(entity.getCidade())
+				.estado(entity.getEstado())
 				.build();
 	}
 }

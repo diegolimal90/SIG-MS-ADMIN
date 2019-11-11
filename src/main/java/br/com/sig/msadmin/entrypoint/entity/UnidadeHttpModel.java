@@ -5,10 +5,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Builder
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UnidadeHttpModel {
+	
 	private Integer id;
+	
+	private Integer tipo;
+	private String nome;
+	private String cep;
+	private String tipoLogradouro;
+	private String logradouro;
+	private Integer numero;
+	private String complemento;
+	private String regiao;
+	private String bairro;
+	private String cidade;
+	private String estado;
 }

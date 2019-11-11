@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.dataprovider;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,7 +25,21 @@ public class CadastrarUnidadeDataProviderTest {
 
 	@Test
 	public void cadastrarUnidade_success(){
-		UnidadeEntity unidade = UnidadeEntity.builder().id(1).build();
+		UnidadeEntity unidade = UnidadeEntity.builder()
+				.id(1)
+				.tipo(1)
+				.nome("teste")
+				.cep("")
+				.tipoLogradouro("")
+				.logradouro("")
+				.numero(0)
+				.complemento("")
+				.regiao("")
+				.bairro("")
+				.cidade("")
+				.estado("")
+				.build();
+		
 		UnidadeTable table = UnidadeTable.builder().build();
 
 		Mockito.when(repository.save(Mockito.any(UnidadeTable.class))).thenReturn(table);
@@ -35,10 +51,23 @@ public class CadastrarUnidadeDataProviderTest {
 
 	@Test(expected = RuntimeException.class)
 	public void cadastrarUnidade_exception(){
-		UnidadeEntity unidade = UnidadeEntity.builder().id(1).build();
+		UnidadeEntity unidade = UnidadeEntity.builder()
+				.id(15)
+				.tipo(12)
+				.nome("teste")
+				.cep("")
+				.tipoLogradouro("")
+				.logradouro("")
+				.numero(90)
+				.complemento("")
+				.regiao("")
+				.bairro("")
+				.cidade("")
+				.estado("")
+				.build();
 
 		Mockito.when(repository.save(Mockito.any(UnidadeTable.class))).thenThrow(new RuntimeException());
 
-		dataprovider.salvarUnidade(unidade);
+		assertThrows(RuntimeException.class, ()-> dataprovider.salvarUnidade(unidade));
 	}
 }
