@@ -24,7 +24,7 @@ public class UnidadeTable {
 	private Integer id;
 	
 	@Column(name="ic_tipo_unidade")
-	private Integer tipo;
+	private String tipo;
 	
 	@Column(name="nm_unidade")
 	private String nome;
@@ -56,4 +56,6 @@ public class UnidadeTable {
 	@Column(name="sg_estado_unidade")
 	private String estado;
 
+	@Column(name="ds_referencia_unidade")
+	private String referencia;
 }

@@ -19,6 +19,7 @@ public class UnidadeHttpModelMapper {
 				.bairro(httpModel.getBairro())
 				.cidade(httpModel.getCidade())
 				.estado(httpModel.getEstado())
+				.referencia(httpModel.getReferencia())
 				.build();
 	}
 
@@ -36,6 +37,7 @@ public class UnidadeHttpModelMapper {
 				.bairro(entity.getBairro())
 				.cidade(entity.getCidade())
 				.estado(entity.getEstado())
+				.referencia(entity.getReferencia())
 				.build();
 	}
 }

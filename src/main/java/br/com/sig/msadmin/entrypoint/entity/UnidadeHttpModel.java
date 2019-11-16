@@ -13,7 +13,7 @@ public class UnidadeHttpModel {
 	
 	private Integer id;
 	
-	private Integer tipo;
+	private String tipo;
 	private String nome;
 	private String cep;
 	private String tipoLogradouro;
@@ -24,4 +24,5 @@ public class UnidadeHttpModel {
 	private String bairro;
 	private String cidade;
 	private String estado;
+	private String referencia;
 }

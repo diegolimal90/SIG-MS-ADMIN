@@ -1,5 +1,8 @@
 package br.com.sig.msadmin.dataprovider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +13,7 @@ import br.com.sig.msadmin.dataprovider.mapper.UnidadeTableMapper;
 import br.com.sig.msadmin.dataprovider.repository.UnidadeRepository;
 
 @Component
-public class CadastrarUnidadeDataProvider implements UnidadeGateway{
+public class UnidadeDataProvider implements UnidadeGateway{
 	
 	@Autowired
 	private UnidadeRepository unidadeRepository;
@@ -27,5 +30,27 @@ public class CadastrarUnidadeDataProvider implements UnidadeGateway{
 		} catch (RuntimeException e) {
 			throw new RuntimeException("Falha na persistencia do profissional");
 		}
+	}
+	
+	@Override
+	public List<UnidadeEntity> pesquisarUnidades(){
+		List<UnidadeTable> listTable = new ArrayList<>();
+		List<UnidadeEntity> listEntity = new ArrayList<>();
+		
+		try {
+			
+			listTable = unidadeRepository.findAll();
+			
+			for(UnidadeTable table : listTable) {
+				UnidadeEntity entity = UnidadeTableMapper.to(table);
+				listEntity.add(entity);
+			}
+			
+			return listEntity;
+			
+		} catch(RuntimeException e) {
+			throw new RuntimeException("Falha na persistencia do profissional");
+		}
+			
 	}
 }

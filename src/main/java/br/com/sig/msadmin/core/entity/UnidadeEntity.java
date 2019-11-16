@@ -13,7 +13,7 @@ public class UnidadeEntity {
 
 	private Integer id;
 	
-	private Integer tipo;
+	private String tipo;
 	private String nome;
 	private String cep;
 	private String tipoLogradouro;
@@ -24,5 +24,6 @@ public class UnidadeEntity {
 	private String bairro;
 	private String cidade;
 	private String estado;
+	private String referencia;
 	
 }

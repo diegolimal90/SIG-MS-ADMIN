@@ -19,6 +19,7 @@ public class UnidadeTableMapper {
 				.bairro(table.getBairro())
 				.cidade(table.getCidade())
 				.estado(table.getEstado())
+				.referencia(table.getReferencia())
 				.build();
 	}
 	
@@ -36,6 +37,7 @@ public class UnidadeTableMapper {
 				.bairro(entity.getBairro())
 				.cidade(entity.getCidade())
 				.estado(entity.getEstado())
+				.referencia(entity.getReferencia())
 				.build();
 	}
 }
