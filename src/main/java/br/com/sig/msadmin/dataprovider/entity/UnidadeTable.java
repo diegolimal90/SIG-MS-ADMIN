@@ -58,4 +58,7 @@ public class UnidadeTable {
 
 	@Column(name="ds_referencia_unidade")
 	private String referencia;
+	
+	@Column(name="nm_status_unidade")
+	private String status;
 }

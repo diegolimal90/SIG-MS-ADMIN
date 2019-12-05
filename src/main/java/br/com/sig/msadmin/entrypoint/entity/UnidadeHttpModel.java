@@ -25,4 +25,5 @@ public class UnidadeHttpModel {
 	private String cidade;
 	private String estado;
 	private String referencia;
+	private String status;
 }

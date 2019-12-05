@@ -14,8 +14,7 @@ public class PesquisarUnidadeUseCase {
 	@Autowired
 	private UnidadeGateway gateway;
 	
-	
-	public List<UnidadeEntity> buscarUnidades(){
+	public List<UnidadeEntity> pesquisarUnidades(){
 		return gateway.pesquisarUnidades();
 	}
 }

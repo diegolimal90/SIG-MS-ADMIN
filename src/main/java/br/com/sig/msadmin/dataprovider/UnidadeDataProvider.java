@@ -21,6 +21,7 @@ public class UnidadeDataProvider implements UnidadeGateway{
 	@Override
 	public UnidadeEntity salvarUnidade(UnidadeEntity entity) throws RuntimeException{		
 		try {
+			entity.setStatus("Ativado");
 			UnidadeTable table = UnidadeTableMapper.from(entity);
 			
 			table = unidadeRepository.save(table);
@@ -38,7 +39,6 @@ public class UnidadeDataProvider implements UnidadeGateway{
 		List<UnidadeEntity> listEntity = new ArrayList<>();
 		
 		try {
-			
 			listTable = unidadeRepository.findAll();
 			
 			for(UnidadeTable table : listTable) {
@@ -47,10 +47,8 @@ public class UnidadeDataProvider implements UnidadeGateway{
 			}
 			
 			return listEntity;
-			
 		} catch(RuntimeException e) {
 			throw new RuntimeException("Falha na persistencia do profissional");
-		}
-			
+		}		
 	}
 }

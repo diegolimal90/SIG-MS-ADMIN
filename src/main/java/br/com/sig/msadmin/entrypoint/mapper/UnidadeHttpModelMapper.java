@@ -20,6 +20,7 @@ public class UnidadeHttpModelMapper {
 				.cidade(httpModel.getCidade())
 				.estado(httpModel.getEstado())
 				.referencia(httpModel.getReferencia())
+				.status(httpModel.getStatus())
 				.build();
 	}
 
@@ -38,6 +39,7 @@ public class UnidadeHttpModelMapper {
 				.cidade(entity.getCidade())
 				.estado(entity.getEstado())
 				.referencia(entity.getReferencia())
+				.status(entity.getStatus())
 				.build();
 	}
 }

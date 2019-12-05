@@ -21,7 +21,7 @@ import br.com.sig.msadmin.entrypoint.mapper.UnidadeHttpModelMapper;
 public class UnidadeEntrypoint {
 	
 	@Autowired
-	private CadastrarUnidadeUseCase useCase;
+	private CadastrarUnidadeUseCase cadastrarUnidadeUseCase;
 	
 	@Autowired
 	private PesquisarUnidadeUseCase buscarUnidadeUseCase;
@@ -29,15 +29,15 @@ public class UnidadeEntrypoint {
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public ResponseEntity<UnidadeHttpModel> cadastrarUnidade(@RequestBody UnidadeHttpModel httpModel){
 		UnidadeEntity entity = UnidadeHttpModelMapper.to(httpModel);
-		entity = useCase.cadastrarUnidade(entity);
+		entity = cadastrarUnidadeUseCase.cadastrarUnidade(entity);
 		UnidadeHttpModel response = UnidadeHttpModelMapper.from(entity);
 		
 		return ResponseEntity.ok().body(response);
 	}
-
+	
 	@RequestMapping(value = "/", method=RequestMethod.GET)
 	public ResponseEntity<List<UnidadeHttpModel>> pesquisarUnidades(){
-		List<UnidadeEntity> listEntity = buscarUnidadeUseCase.buscarUnidades();
+		List<UnidadeEntity> listEntity = buscarUnidadeUseCase.pesquisarUnidades();
 		List<UnidadeHttpModel> listResponse = new ArrayList<>();
 		
 		for(UnidadeEntity entity : listEntity) {
