@@ -36,7 +36,7 @@ public class CadastrarUnidadeDataProviderTest {
 	}
 
 	@Test(expected = RuntimeException.class)
-	public void cadastrarUnidade_exception() throws RuntimeException{
+	public void cadastrarUnidade_exception() {
 		UnidadeEntity unidade = UnidadeEntity.builder().build();
 
 		Mockito.when(repository.save(Mockito.any(UnidadeTable.class))).thenThrow(new RuntimeException());

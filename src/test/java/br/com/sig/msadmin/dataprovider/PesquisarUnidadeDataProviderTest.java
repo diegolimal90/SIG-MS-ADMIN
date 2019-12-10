@@ -37,7 +37,7 @@ public class PesquisarUnidadeDataProviderTest {
 	}
 
 	@Test(expected = RuntimeException.class)
-	public void pesquisarUnidades_exception() throws RuntimeException{
+	public void pesquisarUnidades_exception() {
 
 		Mockito.when(repository.findAll()).thenThrow(new RuntimeException());
 
