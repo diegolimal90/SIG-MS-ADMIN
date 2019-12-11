@@ -1,6 +1,5 @@
 package br.com.sig.msadmin.entrypoint.entity;
 
-import br.com.sig.msadmin.entrypoint.entity.UnidadeHttpModel.UnidadeHttpModelBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

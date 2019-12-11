@@ -12,7 +12,7 @@ public class CadastrarUnidadeUseCase {
 	@Autowired
 	private UnidadeGateway gateway;
 	
-	public UnidadeEntity cadastrarUnidade(UnidadeEntity entity) throws RuntimeException{
+	public UnidadeEntity cadastrarUnidade(UnidadeEntity entity){
 		return gateway.salvarUnidade(entity);
 	}
 }

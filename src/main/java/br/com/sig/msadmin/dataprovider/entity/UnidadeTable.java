@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 public class UnidadeTable {
 
+	//Todo Id deve ser informado com o tipo long, pelo motivo que o long tem um espaço maior de memoria do que o Integer
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;

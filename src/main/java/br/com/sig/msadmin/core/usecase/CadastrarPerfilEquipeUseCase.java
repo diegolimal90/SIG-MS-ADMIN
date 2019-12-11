@@ -12,7 +12,7 @@ public class CadastrarPerfilEquipeUseCase {
 	@Autowired
 	private PerfilEquipeGateway gateway;
 	
-	public PerfilEquipeEntity cadastrarPerfilEqupe(PerfilEquipeEntity entity) throws RuntimeException {
+	public PerfilEquipeEntity cadastrarPerfilEqupe(PerfilEquipeEntity entity){
 		
 		
 		return gateway.salvarPerfil(entity);

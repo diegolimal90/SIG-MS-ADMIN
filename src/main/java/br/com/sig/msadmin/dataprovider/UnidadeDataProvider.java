@@ -19,7 +19,7 @@ public class UnidadeDataProvider implements UnidadeGateway{
 	private UnidadeRepository unidadeRepository;
 	
 	@Override
-	public UnidadeEntity salvarUnidade(UnidadeEntity entity) throws RuntimeException{		
+	public UnidadeEntity salvarUnidade(UnidadeEntity entity){		
 		try {
 			entity.setStatus("Ativado");
 			UnidadeTable table = UnidadeTableMapper.from(entity);

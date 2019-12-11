@@ -6,7 +6,7 @@ import br.com.sig.msadmin.core.entity.UnidadeEntity;
 
 public interface UnidadeGateway {
 
-	UnidadeEntity salvarUnidade(UnidadeEntity entity) throws RuntimeException;
+	UnidadeEntity salvarUnidade(UnidadeEntity entity);
 	
 	List<UnidadeEntity> pesquisarUnidades();
 }
