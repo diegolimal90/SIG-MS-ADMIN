@@ -13,6 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import br.com.sig.msadmin.core.entity.UnidadeEntity;
 import br.com.sig.msadmin.dataprovider.entity.UnidadeTable;
 import br.com.sig.msadmin.dataprovider.repository.UnidadeRepository;
+import br.com.sig.msadmin.exception.DataBaseException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CadastrarUnidadeDataProviderTest {
@@ -35,12 +36,12 @@ public class CadastrarUnidadeDataProviderTest {
 		Assert.assertThat(result, Matchers.any(UnidadeEntity.class));
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test(expected = DataBaseException.class)
 	public void cadastrarUnidade_exception() {
 		UnidadeEntity unidade = UnidadeEntity.builder().build();
 
-		Mockito.when(repository.save(Mockito.any(UnidadeTable.class))).thenThrow(new RuntimeException());
+		Mockito.when(repository.save(Mockito.any(UnidadeTable.class))).thenThrow(new DataBaseException("Falha na persistência"));
 
-		Assertions.assertThrows(RuntimeException.class, ()-> dataprovider.salvarUnidade(unidade));
+		Assertions.assertThrows(DataBaseException.class, ()-> dataprovider.salvarUnidade(unidade));
 	}
 }

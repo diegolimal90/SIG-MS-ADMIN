@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UnidadeHttpModel {
 	
-	private Integer id;
+	private Long id;
 	
 	private String tipo;
 	private String nome;

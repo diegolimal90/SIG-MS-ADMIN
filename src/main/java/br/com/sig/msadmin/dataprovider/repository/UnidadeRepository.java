@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.sig.msadmin.dataprovider.entity.UnidadeTable;
 
 @Repository
-public interface UnidadeRepository extends JpaRepository<UnidadeTable, Integer> {
+public interface UnidadeRepository extends JpaRepository<UnidadeTable, Long> {
 
 }

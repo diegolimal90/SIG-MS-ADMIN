@@ -11,6 +11,7 @@ import br.com.sig.msadmin.core.gateway.UnidadeGateway;
 import br.com.sig.msadmin.dataprovider.entity.UnidadeTable;
 import br.com.sig.msadmin.dataprovider.mapper.UnidadeTableMapper;
 import br.com.sig.msadmin.dataprovider.repository.UnidadeRepository;
+import br.com.sig.msadmin.exception.DataBaseException;
 
 @Component
 public class UnidadeDataProvider implements UnidadeGateway{
@@ -28,8 +29,8 @@ public class UnidadeDataProvider implements UnidadeGateway{
 			entity = UnidadeTableMapper.to(table);
 			
 			return entity;
-		} catch (RuntimeException e) {
-			throw new RuntimeException("Falha na persistencia do profissional");
+		} catch (Exception e) {
+			throw new DataBaseException("Falha na persistencia do cadastro de unidade");
 		}
 	}
 	
@@ -47,8 +48,8 @@ public class UnidadeDataProvider implements UnidadeGateway{
 			}
 			
 			return listEntity;
-		} catch(RuntimeException e) {
-			throw new RuntimeException("Falha na persistencia do profissional");
+		} catch (Exception e) {
+			throw new DataBaseException("Falha na persistencia em pesquisar unidade");
 		}		
 	}
 }

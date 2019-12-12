@@ -16,6 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import br.com.sig.msadmin.core.entity.UnidadeEntity;
 import br.com.sig.msadmin.dataprovider.entity.UnidadeTable;
 import br.com.sig.msadmin.dataprovider.repository.UnidadeRepository;
+import br.com.sig.msadmin.exception.DataBaseException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PesquisarUnidadeDataProviderTest {
@@ -36,11 +37,11 @@ public class PesquisarUnidadeDataProviderTest {
 		Assert.assertThat(result, Matchers.any(List.class));
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test(expected = DataBaseException.class)
 	public void pesquisarUnidades_exception() {
 
-		Mockito.when(repository.findAll()).thenThrow(new RuntimeException());
+		Mockito.when(repository.findAll()).thenThrow(new DataBaseException("Falha na persistência"));
 
-		Assertions.assertThrows(RuntimeException.class, ()-> dataprovider.pesquisarUnidades());
+		Assertions.assertThrows(DataBaseException.class, ()-> dataprovider.pesquisarUnidades());
 	}
 }
