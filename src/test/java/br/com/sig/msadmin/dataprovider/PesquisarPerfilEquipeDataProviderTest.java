@@ -16,6 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import br.com.sig.msadmin.core.entity.PerfilEquipeEntity;
 import br.com.sig.msadmin.dataprovider.entity.PerfilEquipeTable;
 import br.com.sig.msadmin.dataprovider.repository.PerfilEquipeRepository;
+import br.com.sig.msadmin.exception.DataBaseException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PesquisarPerfilEquipeDataProviderTest {
@@ -36,11 +37,11 @@ public class PesquisarPerfilEquipeDataProviderTest {
 		Assert.assertThat(result, Matchers.any(List.class));
 	}
 
-	//@Test(expected = RuntimeException.class)
+	@Test(expected = DataBaseException.class)
 	public void pesquisarPerfilEquipes_exception() {
 
-		Mockito.when(perfilEquipeRepository.findAll()).thenThrow(new RuntimeException());
+		Mockito.when(perfilEquipeRepository.findAll()).thenThrow(new DataBaseException("Falha na persistencia"));
 
-		Assertions.assertThrows(RuntimeException.class, ()-> dataProvider.pesquisarPerfil());
+		Assertions.assertThrows(DataBaseException.class, ()-> dataProvider.pesquisarPerfil());
 	}
 }

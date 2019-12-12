@@ -7,6 +7,6 @@ import br.com.sig.msadmin.dataprovider.entity.PerfilEquipeTable;
 
 //TODO na Declaração do JpaRepository<E, Type> vc deve colocar o mesmo tipo que foi dado ao campo que obtem o @Id
 @Repository
-public interface PerfilEquipeRepository extends JpaRepository<PerfilEquipeTable, Integer>{
+public interface PerfilEquipeRepository extends JpaRepository<PerfilEquipeTable, Long>{
 
 }

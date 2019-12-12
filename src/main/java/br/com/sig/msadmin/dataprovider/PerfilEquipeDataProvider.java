@@ -11,6 +11,7 @@ import br.com.sig.msadmin.core.gateway.PerfilEquipeGateway;
 import br.com.sig.msadmin.dataprovider.entity.PerfilEquipeTable;
 import br.com.sig.msadmin.dataprovider.mapper.PerfilEquipeMapper;
 import br.com.sig.msadmin.dataprovider.repository.PerfilEquipeRepository;
+import br.com.sig.msadmin.exception.DataBaseException;
 
 @Component
 public class PerfilEquipeDataProvider implements PerfilEquipeGateway {
@@ -29,9 +30,9 @@ public class PerfilEquipeDataProvider implements PerfilEquipeGateway {
 
 			return entity;
 		//TODO toda exceção que você nao sabe que pode ocorrer vc deve usar o Exception(exeção generica)
-		} catch (RuntimeException e) {
+		} catch (Exception e) {
 			//TODO utilizar lançamento de exceção DataBaseException que se encontra no pacote de exception
-			throw new RuntimeException("Falha na persistencia do pesquisar perfil de equipe");
+			throw new DataBaseException("Falha na persistencia do cadastrar perfil de equipe");
 		}
 	}
 
@@ -50,8 +51,8 @@ public class PerfilEquipeDataProvider implements PerfilEquipeGateway {
 
 			return listEntity;
 
-		} catch (RuntimeException e) {
-			throw new RuntimeException("Falha na persistencia do pesquisar perfil de equipe");
+		} catch (Exception e) {
+			throw new DataBaseException("Falha na persistencia do pesquisar perfil de equipe");
 		}
 	}
 

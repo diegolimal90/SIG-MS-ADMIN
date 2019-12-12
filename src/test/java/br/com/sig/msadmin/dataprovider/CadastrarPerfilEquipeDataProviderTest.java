@@ -13,6 +13,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import br.com.sig.msadmin.core.entity.PerfilEquipeEntity;
 import br.com.sig.msadmin.dataprovider.entity.PerfilEquipeTable;
 import br.com.sig.msadmin.dataprovider.repository.PerfilEquipeRepository;
+import br.com.sig.msadmin.exception.DataBaseException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CadastrarPerfilEquipeDataProviderTest {
@@ -36,13 +37,13 @@ public class CadastrarPerfilEquipeDataProviderTest {
 		Assert.assertThat(result, Matchers.any(PerfilEquipeEntity.class));
 	}
 	
-	//@Test(expected = RuntimeException.class)
+	@Test(expected = DataBaseException.class)
 	public void cadastrarPerfilEquipe_exception() {
 		PerfilEquipeEntity perfilEquipe = PerfilEquipeEntity.builder().build();
 
-		Mockito.when(perfilEquipeRepository.save(Mockito.any(PerfilEquipeTable.class))).thenThrow(new RuntimeException());
+		Mockito.when(perfilEquipeRepository.save(Mockito.any(PerfilEquipeTable.class))).thenThrow(new DataBaseException("Falha na persistência"));
 
-		Assertions.assertThrows(RuntimeException.class, ()-> dataprovider.salvarPerfil(perfilEquipe));
+		Assertions.assertThrows(DataBaseException.class, ()-> dataprovider.salvarPerfil(perfilEquipe));
 	}
 
 }
