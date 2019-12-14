@@ -21,6 +21,12 @@ public class UnidadeTableMapper {
 				.estado(table.getEstado())
 				.referencia(table.getReferencia())
 				.status(table.getStatus())
+				.dataCadastro(table.getDataCadastro())
+				.dataAlteracao(table.getDataAlteracao())
+				.dataDesativacao(table.getDataDesativacao())
+				.idCadastro(table.getIdCadastro())
+				.idAlteracao(table.getIdAlteracao())
+				.idDesativacao(table.getIdDesativacao())
 				.build();
 	}
 	
@@ -40,6 +46,12 @@ public class UnidadeTableMapper {
 				.estado(entity.getEstado())
 				.referencia(entity.getReferencia())
 				.status(entity.getStatus())
+				.dataCadastro(entity.getDataCadastro())
+				.dataAlteracao(entity.getDataAlteracao())
+				.dataDesativacao(entity.getDataDesativacao())
+				.idCadastro(entity.getIdCadastro())
+				.idAlteracao(entity.getIdAlteracao())
+				.idDesativacao(entity.getIdDesativacao())
 				.build();
 	}
 }

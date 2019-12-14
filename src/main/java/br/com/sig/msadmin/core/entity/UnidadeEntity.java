@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.core.entity;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,4 +29,10 @@ public class UnidadeEntity {
 	private String referencia;
 	private String status;
 	
+	private Date dataCadastro;
+	private Date dataAlteracao;
+	private Date dataDesativacao;
+	private Long idCadastro;
+	private Long idAlteracao;
+	private Long idDesativacao;
 }
