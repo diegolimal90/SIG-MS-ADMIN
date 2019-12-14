@@ -9,24 +9,24 @@ public class ViaturaMapper{
 
     public static ViaturaEntity to(ViaturaTable table){
         return Optional.ofNullable(table).map(e -> ViaturaEntity.builder()
-                .id(table.getId())
-                .ano(table.getAno())
-                .placa(table.getPlaca())
-                .fabricante(table.getFabricante())
-                .quilometragem_atual(table.getQuilometragem_atual())
-                .quilometragem_inicial(table.getQuilometragem_inicial())
+                .id(e.getId())
+                .ano(e.getAno())
+                .placa(e.getPlaca())
+                .fabricante(e.getFabricante())
+                .quilometragem_atual(e.getQuilometragem_atual())
+                .quilometragem_inicial(e.getQuilometragem_inicial())
                 .build())
                 .orElse(new ViaturaEntity());
     }
 
     public static ViaturaTable from(ViaturaEntity entity){
         return Optional.ofNullable(entity).map(e -> ViaturaTable.builder()
-                .id(entity.getId())
-                .ano(entity.getAno())
-                .placa(entity.getPlaca())
-                .fabricante(entity.getFabricante())
-                .quilometragem_atual(entity.getQuilometragem_atual())
-                .quilometragem_inicial(entity.getQuilometragem_inicial())
+                .id(e.getId())
+                .ano(e.getAno())
+                .placa(e.getPlaca())
+                .fabricante(e.getFabricante())
+                .quilometragem_atual(e.getQuilometragem_atual())
+                .quilometragem_inicial(e.getQuilometragem_inicial())
                 .build())
                 .orElse(new ViaturaTable());
     }
