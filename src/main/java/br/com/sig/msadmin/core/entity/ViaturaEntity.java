@@ -11,14 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ViaturaEntity{
 
-    private long id;
+    private Long id;
 
-    private int ano;
+    private Integer ano;
     
     private String placa;
     private String fabricante;
     
-    private int quilometragem_atual;
-    private int quilometragem_inicial;
+    private Integer quilometragem_atual;
+    private Integer quilometragem_inicial;
+
+    //TODO Adicionar dt_criacao, dt_alteracao, nm_de_alteracao
      
 }

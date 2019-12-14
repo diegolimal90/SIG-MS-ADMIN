@@ -37,4 +37,6 @@ public class ViaturaTable{
     @Column(name = "cd_quilometragem_inicial_viatura")
     private int quilometragem_inicial;
 
+    //TODO Adicionar dt_criacao, dt_alteracao, nm_de_alteracao na table
+
 }
