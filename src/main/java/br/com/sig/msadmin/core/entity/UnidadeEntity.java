@@ -27,7 +27,7 @@ public class UnidadeEntity {
 	private String cidade;
 	private String estado;
 	private String referencia;
-	private String status;
+	private Integer status;
 	
 	private Date dataCadastro;
 	private Date dataAlteracao;

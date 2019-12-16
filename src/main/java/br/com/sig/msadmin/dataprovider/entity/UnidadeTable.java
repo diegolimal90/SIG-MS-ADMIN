@@ -61,8 +61,8 @@ public class UnidadeTable {
 	@Column(name="ds_referencia_unidade", length = 200)
 	private String referencia;
 	
-	@Column(name="nm_status_unidade", length = 10)
-	private String status;
+	@Column(name="cd_status_unidade", length = 1)
+	private Integer status;
 	
 	@Column(name="dt_cadastro_unidade")
 	private Date dataCadastro;

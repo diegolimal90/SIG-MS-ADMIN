@@ -30,7 +30,7 @@ public class UnidadeHttpModel {
 	private String cidade;
 	private String estado;
 	private String referencia;
-	private String status;
+	private Integer status;
 	
 	@JsonProperty("data_cadastro")
 	@JsonFormat(pattern="dd/MM/yyyy")

@@ -1,9 +1,10 @@
 package br.com.sig.msadmin.dataprovider;
 
+import java.util.Date;
+
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -22,10 +23,15 @@ public class CadastrarUnidadeDataProviderTest {
 	private UnidadeDataProvider dataprovider;
 	@Mock
 	private UnidadeRepository repository;
-
+   
+	private Date date = new Date();
+	   
 	@Test
 	public void cadastrarUnidade_success(){
-		UnidadeEntity unidade = UnidadeEntity.builder().build();
+		UnidadeEntity unidade = UnidadeEntity.builder()
+			.id(1L).tipo("base").nome("Teste unidade").cep("11700190").tipoLogradouro("Rua").logradouro("Espírito Santo")
+			.numero(391).complemento("apto 122").regiao("Baixada Santista").bairro("Canto do Forte").cidade("Praia Grande").estado("SP")
+			.referencia("Proximo a Fatec").dataCadastro(date).idCadastro(22L).build();
 		
 		UnidadeTable table = UnidadeTable.builder().build();
 
@@ -38,10 +44,13 @@ public class CadastrarUnidadeDataProviderTest {
 
 	@Test(expected = DataBaseException.class)
 	public void cadastrarUnidade_exception() {
-		UnidadeEntity unidade = UnidadeEntity.builder().build();
+		UnidadeEntity unidade = UnidadeEntity.builder()
+			.id(1L).tipo("base").nome("Teste unidade").cep("11700190").tipoLogradouro("Rua").logradouro("Espírito Santo")
+			.numero(391).complemento("apto 122").regiao("Baixada Santista").bairro("Canto do Forte").cidade("Praia Grande").estado("SP")
+			.referencia("Proximo a Fatec").dataCadastro(date).idCadastro(22L).build();
 
-		Mockito.when(repository.save(Mockito.any(UnidadeTable.class))).thenThrow(new DataBaseException("Falha na persistência"));
+		Mockito.doThrow(new DataBaseException("Falha na persistência")).when(repository).save(Mockito.any(UnidadeTable.class));
 
-		Assertions.assertThrows(DataBaseException.class, ()-> dataprovider.salvarUnidade(unidade));
+		dataprovider.salvarUnidade(unidade);
 	}
 }

@@ -1,8 +1,6 @@
 package br.com.sig.msadmin.dataprovider;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +22,6 @@ public class UnidadeDataProvider implements UnidadeGateway{
 	@Override
 	public UnidadeEntity salvarUnidade(UnidadeEntity entity){		
 		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date dataCadastro = new Date();
-			
-			entity.setDataCadastro(sdf.parse(sdf.format(dataCadastro)));
-			entity.setStatus("ativado");
 			UnidadeTable table = UnidadeTableMapper.from(entity);
 			
 			table = unidadeRepository.save(table);
