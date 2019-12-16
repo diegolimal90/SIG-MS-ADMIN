@@ -24,11 +24,7 @@ public class UnidadeHttpModelMapper {
 				.referencia(e.getReferencia())
 				.status(e.getStatus())
 				.dataCadastro(e.getDataCadastro())
-				.dataAlteracao(e.getDataAlteracao())
-				.dataDesativacao(e.getDataDesativacao())
 				.idCadastro(e.getIdCadastro())
-				.idAlteracao(e.getIdAlteracao())
-				.idDesativacao(e.getIdDesativacao())
 				.build())
 				.orElse(new UnidadeEntity());
 	}
@@ -50,11 +46,7 @@ public class UnidadeHttpModelMapper {
 				.referencia(e.getReferencia())
 				.status(e.getStatus())
 				.dataCadastro(e.getDataCadastro())
-				.dataAlteracao(e.getDataAlteracao())
-				.dataDesativacao(e.getDataDesativacao())
 				.idCadastro(e.getIdCadastro())
-				.idAlteracao(e.getIdAlteracao())
-				.idDesativacao(e.getIdDesativacao())
 				.build())
 				.orElse(new UnidadeHttpModel());
 	}

@@ -13,6 +13,8 @@ public class CadastrarUnidadeUseCase {
 	private UnidadeGateway gateway;
 	
 	public UnidadeEntity cadastrarUnidade(UnidadeEntity entity){
+		entity.setStatus(1);
+		
 		return gateway.salvarUnidade(entity);
 	}
 }

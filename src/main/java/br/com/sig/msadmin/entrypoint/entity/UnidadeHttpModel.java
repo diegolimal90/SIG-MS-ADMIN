@@ -21,7 +21,10 @@ public class UnidadeHttpModel {
 	private String tipo;
 	private String nome;
 	private String cep;
+	
+	@JsonProperty("tipo_logradouro")
 	private String tipoLogradouro;
+	
 	private String logradouro;
 	private Integer numero;
 	private String complemento;
@@ -36,20 +39,7 @@ public class UnidadeHttpModel {
 	@JsonFormat(pattern="dd/MM/yyyy")
 	private Date dataCadastro;
 	
-	@JsonProperty("data_alteracao")
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private Date dataAlteracao;
-	
-	@JsonProperty("data_desativacao")
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private Date dataDesativacao;
-	
 	@JsonProperty("usuario_cadastro")
 	private Long idCadastro;
 	
-	@JsonProperty("usuario_alteracao")
-	private Long idAlteracao;
-	
-	@JsonProperty("usuario_desativacao")
-	private Long idDesativacao;
 }
