@@ -14,6 +14,12 @@ public class ViaturaHttpModelMapper{
                 .fabricante(e.getFabricante())
                 .quilometragem_atual(e.getQuilometragem_atual())
                 .quilometragem_inicial(e.getQuilometragem_inicial())
+                .dataCadastro(e.getDataCadastro())
+                .dataAlteracao(e.getDataAlteracao())
+                .dataDesativacao(e.getDataDesativacao())
+                .idCadastro(e.getIdCadastro())
+                .idAlteracao(e.getIdAlteracao())
+                .idDesativacao(e.getIdDesativacao())
                 .build())
                 .orElse(new ViaturaEntity());
     }
@@ -26,6 +32,12 @@ public class ViaturaHttpModelMapper{
                 .fabricante(e.getFabricante())
                 .quilometragem_atual(e.getQuilometragem_atual())
                 .quilometragem_inicial(e.getQuilometragem_inicial())
+                .dataCadastro(e.getDataCadastro())
+                .dataAlteracao(e.getDataAlteracao())
+                .dataDesativacao(e.getDataDesativacao())
+                .idCadastro(e.getIdCadastro())
+                .idAlteracao(e.getIdAlteracao())
+                .idDesativacao(e.getIdDesativacao())
                 .build())
                 .orElse(new ViaturaHttpModel());
     }

@@ -23,9 +23,13 @@ public class CadastrarViaturaDataProviderTest {
     @Mock
     private ViaturaRepository viaturaRepository;
 
+    //TODO Corrigir teste
     @Test
     public void cadastrarViatura_success(){
-        ViaturaEntity viatura = ViaturaEntity.builder().build();
+        ViaturaEntity viatura = ViaturaEntity.builder()
+                                             .id(1L)
+                                             .ano(2010)
+                                             .build();
 
         ViaturaTable table = ViaturaTable.builder().build();
 
