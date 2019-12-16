@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.dataprovider.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,10 +24,10 @@ public class PerfilEquipeTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="nm_perfil_equipe")
+	@Column(name="nm_perfil_equipe", length = 65)
 	private String nome;
 	
-	@Column(name="sg_perfil_equipe")
+	@Column(name="sg_perfil_equipe", length = 2)
 	private String sigla;
 	
 	@Column(name="cd_profissionais")
@@ -37,10 +39,28 @@ public class PerfilEquipeTable {
 	@Column(name="cd_veiculo")
 	private Long veiculoId;
 	
-	@Column(name="ds_equipamentos")
+	@Column(name="ds_equipamentos", length = 100)
 	private String descricaoEquipamentos;
 		
 	@Column(name="qt_equipamentos")
 	private Integer qtEquipamento;
+	
+	@Column(name="dt_cadastro_unidade")
+	private Date dataCadastro;
+
+	@Column(name="dt_alteracao_unidade")
+	private Date dataAlteracao;
+
+	@Column(name="dt_desativacao_unidade")
+	private Date dataDesativacao;
+
+	@Column(name="cd_usuario_cadastro_unidade")
+	private Long idCadastro;
+
+	@Column(name="cd_usuario_alteracao_unidade")
+	private Long idAlteracao;
+
+	@Column(name="cd_usuario_desativacao_unidade")
+	private Long idDesativacao;
 
 }

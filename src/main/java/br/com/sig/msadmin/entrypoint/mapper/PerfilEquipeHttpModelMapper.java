@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.entrypoint.mapper;
 
+import java.util.Optional;
+
 import br.com.sig.msadmin.core.entity.PerfilEquipeEntity;
 import br.com.sig.msadmin.entrypoint.entity.PerfilEquipeHttpModel;
 
@@ -7,7 +9,7 @@ public class PerfilEquipeHttpModelMapper {
 	
 	public static PerfilEquipeEntity to(PerfilEquipeHttpModel httpModel) {
 		
-		return PerfilEquipeEntity.builder()
+		return Optional.ofNullable(httpModel).map(e -> PerfilEquipeEntity.builder()
 				.id(httpModel.getId())
 				.nome(httpModel.getNome())
 				.sigla(httpModel.getSigla())
@@ -16,11 +18,18 @@ public class PerfilEquipeHttpModelMapper {
 				.profissionaisId(httpModel.getProfissionaisId())
 				.veiculoId(httpModel.getVeiculoId())
 				.qtEquipamento(httpModel.getQtProfissionais())
-				.build();
+				.dataCadastro(httpModel.getDataCadastro())
+				.dataAlteracao(httpModel.getDataAlteracao())
+				.dataDesativacao(httpModel.getDataDesativacao())
+				.idCadastro(httpModel.getIdCadastro())
+				.idAlteracao(httpModel.getIdAlteracao())
+				.idDesativacao(httpModel.getIdDesativacao())
+				.build())
+				.orElse(new PerfilEquipeEntity());
 	}
 	
 	public static PerfilEquipeHttpModel from(PerfilEquipeEntity entity) {
-		return PerfilEquipeHttpModel.builder()
+		return Optional.ofNullable(entity).map(e -> PerfilEquipeHttpModel.builder()
 				.id(entity.getId())
 				.nome(entity.getNome())
 				.sigla(entity.getSigla())
@@ -29,7 +38,14 @@ public class PerfilEquipeHttpModelMapper {
 				.profissionaisId(entity.getProfissionaisId())
 				.veiculoId(entity.getVeiculoId())
 				.qtEquipamento(entity.getQtProfissionais())
-				.build();
+				.dataCadastro(entity.getDataCadastro())
+				.dataAlteracao(entity.getDataAlteracao())
+				.dataDesativacao(entity.getDataDesativacao())
+				.idCadastro(entity.getIdCadastro())
+				.idAlteracao(entity.getIdAlteracao())
+				.idDesativacao(entity.getIdDesativacao())
+				.build())
+				.orElse(new PerfilEquipeHttpModel());
 	}
 
 }

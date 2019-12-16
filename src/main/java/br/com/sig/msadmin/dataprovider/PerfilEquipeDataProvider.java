@@ -1,6 +1,8 @@
 package br.com.sig.msadmin.dataprovider;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,11 @@ public class PerfilEquipeDataProvider implements PerfilEquipeGateway {
 	public PerfilEquipeEntity salvarPerfil(PerfilEquipeEntity entity) {
 
 		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date dataCadastro = new Date();
+			
+			entity.setDataCadastro(sdf.parse(sdf.format(dataCadastro)));
+			
 			PerfilEquipeTable table = PerfilEquipeMapper.from(entity);
 
 			table = perfilRepository.save(table);

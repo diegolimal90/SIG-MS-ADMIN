@@ -1,34 +1,50 @@
 package br.com.sig.msadmin.dataprovider.mapper;
 
+import java.util.Optional;
+
 import br.com.sig.msadmin.core.entity.PerfilEquipeEntity;
 import br.com.sig.msadmin.dataprovider.entity.PerfilEquipeTable;
 
 public class PerfilEquipeMapper {
 	
 	public static PerfilEquipeEntity to(PerfilEquipeTable table) {
-		return PerfilEquipeEntity.builder()
-				.id(table.getId())
-				.nome(table.getNome())
-				.sigla(table.getSigla())
-				.qtProfissionais(table.getQtProfissionais())
-				.descricaoEquipamentos(table.getDescricaoEquipamentos())
-				.profissionaisId(table.getProfissionaisId())
-				.veiculoId(table.getVeiculoId())
-				.qtEquipamento(table.getQtEquipamento())
-				.build();
+		return Optional.ofNullable(table).map(e -> PerfilEquipeEntity.builder()
+				.id(e.getId())
+				.nome(e.getNome())
+				.sigla(e.getSigla())
+				.qtProfissionais(e.getQtProfissionais())
+				.descricaoEquipamentos(e.getDescricaoEquipamentos())
+				.profissionaisId(e.getProfissionaisId())
+				.veiculoId(e.getVeiculoId())
+				.qtEquipamento(e.getQtEquipamento())
+				.dataCadastro(e.getDataCadastro())
+				.dataAlteracao(e.getDataAlteracao())
+				.dataDesativacao(e.getDataDesativacao())
+				.idCadastro(e.getIdCadastro())
+				.idAlteracao(e.getIdAlteracao())
+				.idDesativacao(e.getIdDesativacao())
+		        .build())
+		        .orElse(new PerfilEquipeEntity());
 	}
 	
 	public static PerfilEquipeTable from(PerfilEquipeEntity entity) {
-		return PerfilEquipeTable.builder()
-				.id(entity.getId())
-				.nome(entity.getNome())
-				.sigla(entity.getSigla())
-				.qtProfissionais(entity.getQtProfissionais())
-				.descricaoEquipamentos(entity.getDescricaoEquipamentos())
-				.profissionaisId(entity.getProfissionaisId())
-				.veiculoId(entity.getVeiculoId())
-				.qtEquipamento(entity.getQtEquipamento())
-				.build();
+		return Optional.ofNullable(entity).map(e -> PerfilEquipeTable.builder()
+				.id(e.getId())
+				.nome(e.getNome())
+				.sigla(e.getSigla())
+				.qtProfissionais(e.getQtProfissionais())
+				.descricaoEquipamentos(e.getDescricaoEquipamentos())
+				.profissionaisId(e.getProfissionaisId())
+				.veiculoId(e.getVeiculoId())
+				.qtEquipamento(e.getQtEquipamento())
+				.dataCadastro(e.getDataCadastro())
+				.dataAlteracao(e.getDataAlteracao())
+				.dataDesativacao(e.getDataDesativacao())
+				.idCadastro(e.getIdCadastro())
+				.idAlteracao(e.getIdAlteracao())
+				.idDesativacao(e.getIdDesativacao())
+				.build())
+                .orElse(new PerfilEquipeTable());
 	}
 
 }
