@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.dataprovider.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,10 +22,10 @@ public class ViaturaTable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "cd_ano_viatura")
-    private int ano;
+    private Integer ano;
 
     @Column(name = "nm_placa_viatura")
     private String placa;
@@ -31,12 +33,28 @@ public class ViaturaTable{
     @Column(name = "nm_fabricante_viatura")
     private String fabricante;
 
-    @Column(name = "cd_quilometragem_atual_viatura")
-    private int quilometragem_atual;
+    @Column(name = "vl_quilometragem_atual_viatura")
+    private Integer quilometragem_atual;
 
-    @Column(name = "cd_quilometragem_inicial_viatura")
-    private int quilometragem_inicial;
+    @Column(name = "vl_quilometragem_inicial_viatura")
+    private Integer quilometragem_inicial;
 
-    //TODO Adicionar dt_criacao, dt_alteracao, nm_de_alteracao na table
+    @Column(name = "dt_cadastro")
+    private Date dataCadastro;
+
+    @Column(name = "dt_alteracao")
+    private Date dataAlteracao;
+    
+    @Column(name = "dt_desativacao")
+    private Date dataDesativacao;
+    
+    @Column(name = "cd_cadastro_viatura")
+    private Long idCadastro;
+    
+    @Column(name = "cd_alteracao_viatura")
+    private Long idAlteracao;
+    
+    @Column(name = "cd_desativacao_viatura")
+	private Long idDesativacao;
 
 }

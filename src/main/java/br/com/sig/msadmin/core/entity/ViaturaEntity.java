@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.core.entity;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +22,12 @@ public class ViaturaEntity{
     
     private Integer quilometragem_atual;
     private Integer quilometragem_inicial;
-
-    //TODO Adicionar dt_criacao, dt_alteracao, nm_de_alteracao
+    
+    private Date dataCadastro;
+	private Date dataAlteracao;
+	private Date dataDesativacao;
+	private Long idCadastro;
+	private Long idAlteracao;
+	private Long idDesativacao;
      
 }

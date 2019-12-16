@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.entrypoint.entity;
 
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,13 +13,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ViaturaHttpModel{
     
-    private long id;
+    private Long id;
 
-    private int ano;
+    private Integer ano;
     
     private String placa;
     private String fabricante;
     
-    private int quilometragem_atual;
-    private int quilometragem_inicial;
+    private Integer quilometragem_atual;
+    private Integer quilometragem_inicial;
+    
+    private Date dataCadastro;
+	private Date dataAlteracao;
+	private Date dataDesativacao;
+	private Long idCadastro;
+	private Long idAlteracao;
+	private Long idDesativacao;
 }
