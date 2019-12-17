@@ -18,11 +18,11 @@ public class PerfilEquipeMapper {
 				.veiculoId(e.getVeiculoId())
 				.qtEquipamento(e.getQtEquipamento())
 				.dataCadastro(e.getDataCadastro())
-				.dataAlteracao(e.getDataAlteracao())
-				.dataDesativacao(e.getDataDesativacao())
+				//.dataAlteracao(e.getDataAlteracao())
+				//.dataDesativacao(e.getDataDesativacao())
 				.idCadastro(e.getIdCadastro())
-				.idAlteracao(e.getIdAlteracao())
-				.idDesativacao(e.getIdDesativacao())
+				//.idAlteracao(e.getIdAlteracao())
+				//.idDesativacao(e.getIdDesativacao())
 		        .build())
 		        .orElse(new PerfilEquipeEntity());
 	}
@@ -38,11 +38,11 @@ public class PerfilEquipeMapper {
 				.veiculoId(e.getVeiculoId())
 				.qtEquipamento(e.getQtEquipamento())
 				.dataCadastro(e.getDataCadastro())
-				.dataAlteracao(e.getDataAlteracao())
-				.dataDesativacao(e.getDataDesativacao())
+				//.dataAlteracao(e.getDataAlteracao())
+				//.dataDesativacao(e.getDataDesativacao())
 				.idCadastro(e.getIdCadastro())
-				.idAlteracao(e.getIdAlteracao())
-				.idDesativacao(e.getIdDesativacao())
+				//.idAlteracao(e.getIdAlteracao())
+				//.idDesativacao(e.getIdDesativacao())
 				.build())
                 .orElse(new PerfilEquipeTable());
 	}

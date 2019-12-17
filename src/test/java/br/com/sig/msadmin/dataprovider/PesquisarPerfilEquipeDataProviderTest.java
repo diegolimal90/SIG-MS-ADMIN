@@ -32,13 +32,13 @@ public class PesquisarPerfilEquipeDataProviderTest {
 	@Test
 	public void pesquisarPerfilEquipes_success(){
 		
-		PerfilEquipeTable perfilEquipe = PerfilEquipeEntity.builder()
+		PerfilEquipeTable perfilEquipe = PerfilEquipeTable.builder()
 				.id(1L)
 				.nome("")
 				.sigla("")
 				.veiculoId(2L)
 				.profissionaisId(3L)
-				.descricaoEquipamentos()
+				.descricaoEquipamentos("")
 				.qtEquipamento(2)
 				.dataCadastro(date)
 				.idCadastro(1L)
@@ -57,13 +57,13 @@ public class PesquisarPerfilEquipeDataProviderTest {
 	@Test(expected = DataBaseException.class)
 	public void pesquisarPerfilEquipes_exception() {
 		
-		PerfilEquipeTable perfilEquipe = PerfilEquipeEntity.builder()
+		PerfilEquipeTable perfilEquipe = PerfilEquipeTable.builder()
 				.id(1L)
 				.nome("")
 				.sigla("")
 				.veiculoId(2L)
 				.profissionaisId(3L)
-				.descricaoEquipamentos()
+				.descricaoEquipamentos("")
 				.qtEquipamento(2)
 				.dataCadastro(date)
 				.idCadastro(1L)
