@@ -37,7 +37,7 @@ public class PerfilEquipeEntrypoint {
 	}
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
-	public ResponseEntity<List<PerfilEquipeHttpModel>> pesquisarPerfilEquipe(@RequestBody PerfilEquipeHttpModel httpModel){
+	public ResponseEntity<List<PerfilEquipeHttpModel>> pesquisarPerfilEquipe(){
 		List<PerfilEquipeEntity> listEntity = pesquisarPerfilEquipeUseCase.pesquisarEquipe();
 		List<PerfilEquipeHttpModel> listResponse = new ArrayList<>();
 		
