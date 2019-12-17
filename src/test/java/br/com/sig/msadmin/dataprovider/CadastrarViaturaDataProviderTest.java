@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.dataprovider;
 
+import java.util.Date;
+
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,12 +25,25 @@ public class CadastrarViaturaDataProviderTest {
     @Mock
     private ViaturaRepository viaturaRepository;
 
-    //TODO Corrigir teste
+    //TODO Incluir outra solução alterando as datas
+    private Date date = new Date();
+
     @Test
     public void cadastrarViatura_success(){
+        
         ViaturaEntity viatura = ViaturaEntity.builder()
                                              .id(1L)
                                              .ano(2010)
+                                             .placa("API-7777")
+                                             .fabricante("Ford")
+                                             .quilometragem_atual(2000)
+                                             .quilometragem_inicial(1000)
+                                             .dataCadastro(date)
+                                             .dataAlteracao(date)
+                                             .dataDesativacao(date)
+                                             .idCadastro(2L)
+                                             .idAlteracao(3L)
+                                             .idDesativacao(2L)
                                              .build();
 
         ViaturaTable table = ViaturaTable.builder().build();
@@ -42,10 +57,23 @@ public class CadastrarViaturaDataProviderTest {
 
     @Test(expected = DataBaseException.class)
     public void cadastrarViatura_exception(){
-        ViaturaEntity viatura = ViaturaEntity.builder().build();
+        ViaturaEntity viatura = ViaturaEntity.builder()
+                                             .id(1L)
+                                             .ano(2010)
+                                             .placa("API-7777")
+                                             .fabricante("Ford")
+                                             .quilometragem_atual(2000)
+                                             .quilometragem_inicial(1000)
+                                             .dataCadastro(date)
+                                             .dataAlteracao(date)
+                                             .dataDesativacao(date)
+                                             .idCadastro(2L)
+                                             .idAlteracao(3L)
+                                             .idDesativacao(2L)
+                                             .build();
 
-        Mockito.when(viaturaRepository.save(Mockito.any(ViaturaTable.class))).thenThrow(new DataBaseException("Falha na persistência"));
+        Mockito.doThrow(new DataBaseException("Falha na persistência")).when(viaturaRepository).save(Mockito.any(ViaturaTable.class));
 
-        Assertions.assertThrows(DataBaseException.class, ()-> dataProvider.salvarViatura(viatura));
+        dataProvider.salvarViatura(viatura);
     }
 }
