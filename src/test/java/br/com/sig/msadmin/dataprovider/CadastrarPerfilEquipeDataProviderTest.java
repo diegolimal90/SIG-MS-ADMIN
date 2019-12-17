@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.dataprovider;
 
+import java.util.Date;
+
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
@@ -24,12 +26,25 @@ public class CadastrarPerfilEquipeDataProviderTest {
 	@Mock
 	private PerfilEquipeRepository perfilEquipeRepository;
 	
+	private Date date = new Date();
+	
 	@Test
 	public void cadastrarPerfilEquipe_success() {
-		PerfilEquipeEntity perfilEquipe = PerfilEquipeEntity.builder().build();
+
+		PerfilEquipeEntity perfilEquipe = PerfilEquipeEntity.builder()
+			.id(1L)
+			.nome("")
+			.sigla("")
+			.veiculoId(2L)
+			.profissionaisId(3L)
+			.descricaoEquipamentos()
+			.qtEquipamento(2)
+			.dataCadastro(date)
+			.idCadastro(1L)
+			.build();
 		
 		PerfilEquipeTable table = PerfilEquipeTable.builder().build();
-
+		
 		Mockito.when(perfilEquipeRepository.save(Mockito.any(PerfilEquipeTable.class))).thenReturn(table);
 
 		PerfilEquipeEntity result = dataprovider.salvarPerfil(perfilEquipe);
@@ -39,11 +54,22 @@ public class CadastrarPerfilEquipeDataProviderTest {
 	
 	@Test(expected = DataBaseException.class)
 	public void cadastrarPerfilEquipe_exception() {
-		PerfilEquipeEntity perfilEquipe = PerfilEquipeEntity.builder().build();
+		
+		PerfilEquipeEntity perfilEquipe = PerfilEquipeEntity.builder()
+				.id(1L)
+				.nome("")
+				.sigla("")
+				.veiculoId(2L)
+				.profissionaisId(3L)
+				.descricaoEquipamentos()
+				.qtEquipamento(2)
+				.dataCadastro(date)
+				.idCadastro(1L)
+				.build();
 
-		Mockito.when(perfilEquipeRepository.save(Mockito.any(PerfilEquipeTable.class))).thenThrow(new DataBaseException("Falha na persistência"));
+		Mockito.doThrow(new DataBaseException("Falha na persistência")).when(perfilEquipeRepository).save(Mockito.any(PerfilEquipeTable.class));
 
-		Assertions.assertThrows(DataBaseException.class, ()-> dataprovider.salvarPerfil(perfilEquipe));
+		dataprovider.salvarPerfil(perfilEquipe);
 	}
 
 }

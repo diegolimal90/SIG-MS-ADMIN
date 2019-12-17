@@ -25,11 +25,6 @@ public class PerfilEquipeDataProvider implements PerfilEquipeGateway {
 	public PerfilEquipeEntity salvarPerfil(PerfilEquipeEntity entity) {
 
 		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date dataCadastro = new Date();
-			
-			entity.setDataCadastro(sdf.parse(sdf.format(dataCadastro)));
-			
 			PerfilEquipeTable table = PerfilEquipeMapper.from(entity);
 
 			table = perfilRepository.save(table);

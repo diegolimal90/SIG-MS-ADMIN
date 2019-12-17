@@ -22,9 +22,5 @@ public class PerfilEquipeEntity {
 	private String descricaoEquipamentos;
 	private Integer qtEquipamento;
 	private Date dataCadastro;
-	private Date dataAlteracao;
-	private Date dataDesativacao;
 	private Long idCadastro;
-	private Long idAlteracao;
-	private Long idDesativacao;
 }

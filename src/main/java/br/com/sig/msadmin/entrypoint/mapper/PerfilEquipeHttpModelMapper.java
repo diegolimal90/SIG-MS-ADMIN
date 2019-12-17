@@ -19,11 +19,7 @@ public class PerfilEquipeHttpModelMapper {
 				.veiculoId(httpModel.getVeiculoId())
 				.qtEquipamento(httpModel.getQtProfissionais())
 				.dataCadastro(httpModel.getDataCadastro())
-				.dataAlteracao(httpModel.getDataAlteracao())
-				.dataDesativacao(httpModel.getDataDesativacao())
 				.idCadastro(httpModel.getIdCadastro())
-				.idAlteracao(httpModel.getIdAlteracao())
-				.idDesativacao(httpModel.getIdDesativacao())
 				.build())
 				.orElse(new PerfilEquipeEntity());
 	}
@@ -39,11 +35,7 @@ public class PerfilEquipeHttpModelMapper {
 				.veiculoId(entity.getVeiculoId())
 				.qtEquipamento(entity.getQtProfissionais())
 				.dataCadastro(entity.getDataCadastro())
-				.dataAlteracao(entity.getDataAlteracao())
-				.dataDesativacao(entity.getDataDesativacao())
 				.idCadastro(entity.getIdCadastro())
-				.idAlteracao(entity.getIdAlteracao())
-				.idDesativacao(entity.getIdDesativacao())
 				.build())
 				.orElse(new PerfilEquipeHttpModel());
 	}

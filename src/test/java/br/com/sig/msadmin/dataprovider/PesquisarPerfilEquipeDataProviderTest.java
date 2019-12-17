@@ -1,6 +1,7 @@
 package br.com.sig.msadmin.dataprovider;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hamcrest.Matchers;
@@ -25,10 +26,26 @@ public class PesquisarPerfilEquipeDataProviderTest {
 	private PerfilEquipeDataProvider dataProvider;
 	@Mock
 	private PerfilEquipeRepository perfilEquipeRepository;
+	
+	private Date date = new Date();
 
 	@Test
 	public void pesquisarPerfilEquipes_success(){
+		
+		PerfilEquipeTable perfilEquipe = PerfilEquipeEntity.builder()
+				.id(1L)
+				.nome("")
+				.sigla("")
+				.veiculoId(2L)
+				.profissionaisId(3L)
+				.descricaoEquipamentos()
+				.qtEquipamento(2)
+				.dataCadastro(date)
+				.idCadastro(1L)
+				.build();
+		
 		List<PerfilEquipeTable> listPerfilEquipe = new ArrayList<>();
+		listPerfilEquipe.add(perfilEquipe);
 
 		Mockito.when(perfilEquipeRepository.findAll()).thenReturn(listPerfilEquipe);
 
@@ -39,9 +56,24 @@ public class PesquisarPerfilEquipeDataProviderTest {
 
 	@Test(expected = DataBaseException.class)
 	public void pesquisarPerfilEquipes_exception() {
-
-		Mockito.when(perfilEquipeRepository.findAll()).thenThrow(new DataBaseException("Falha na persistencia"));
-
-		Assertions.assertThrows(DataBaseException.class, ()-> dataProvider.pesquisarPerfil());
+		
+		PerfilEquipeTable perfilEquipe = PerfilEquipeEntity.builder()
+				.id(1L)
+				.nome("")
+				.sigla("")
+				.veiculoId(2L)
+				.profissionaisId(3L)
+				.descricaoEquipamentos()
+				.qtEquipamento(2)
+				.dataCadastro(date)
+				.idCadastro(1L)
+				.build();
+		
+		List<PerfilEquipeTable> listPerfilEquipe = new ArrayList<>();
+		listPerfilEquipe.add(perfilEquipe);
+		
+		Mockito.doThrow(new DataBaseException("Falha na persistência")).when(perfilEquipeRepository).findAll();
+		
+		dataProvider.pesquisarPerfil();
 	}
 }
