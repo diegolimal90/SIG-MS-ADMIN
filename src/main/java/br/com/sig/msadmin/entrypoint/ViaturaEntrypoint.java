@@ -35,7 +35,7 @@ public class ViaturaEntrypoint{
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ResponseEntity<List<ViaturaHttpModel>> pesquisarViatura(@RequestBody ViaturaHttpModel httpModel){
+    public ResponseEntity<List<ViaturaHttpModel>> pesquisarViatura(){
         List<ViaturaEntity> listEntity = pesquisarViaturaUseCase.pesquisarViatura();
         List<ViaturaHttpModel> listResponse = new ArrayList<>();
 
