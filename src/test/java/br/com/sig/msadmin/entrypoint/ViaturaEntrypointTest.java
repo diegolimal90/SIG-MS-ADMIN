@@ -42,40 +42,25 @@ public class ViaturaEntrypointTest {
 
     @Test
 	public void cadastrarUnidadeEntrypoint_success() {
-		
+
 		Mockito.when(useCase.cadastrarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(viatura);
 		
 		ResponseEntity<ViaturaHttpModel> response = entrypoint.cadastrarViatura(httpModel);
-		
+
 		Assert.assertEquals(HttpStatus.OK, response.getStatusCode());	
 		
     }
     
     // @Test
     // public void cadastrarUnidadeEntrypoint_exception(){
-    //     Mockito.when(useCase.cadastrarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(viatura);
-	// 	System.out.println("Viatura: " + viatura);
-    //     ResponseEntity<ViaturaHttpModel> response = entrypoint.cadastrarViatura(httpModel);
-    //     System.out.println("Response: " + response);
-	// 	Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());	
-    // }
+    //     httpModel.setAno(null);
 
-    // @Test
-    // public void CadastrarViaturaEntrypoint_alternative() throws Exception {
-    //     System.out.println(httpModel);
-    //     mockMvc.perform( MockMvcRequestBuilders
-    //         .post("/viaturas")
-    //         .content(asJsonString(httpModel))
-    //         .contentType(MediaType.APPLICATION_JSON)
-    //         .accept(MediaType.APPLICATION_JSON))
-    //         .andReturn();
-    // }
-    
-    // public static String asJsonString(final Object obj) {
-    //     try {
-    //         return new ObjectMapper().writeValueAsString(obj);
-    //     } catch (Exception e) {
-    //         throw new RuntimeException(e);
-    //     }
+    //     Mockito.doThrow(new DataBaseException("Falha na persistência")).when(useCase.cadastrarViatura(Mockito.any(ViaturaEntity.class)));
+        
+    //     //Mockito.when(useCase.cadastrarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(viatura);
+
+    //     ResponseEntity<ViaturaHttpModel> response = entrypoint.cadastrarViatura(httpModel);
+
+	// 	Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());	
     // }
 }

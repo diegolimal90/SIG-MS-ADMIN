@@ -48,7 +48,7 @@ public class ViaturaDataProvider implements ViaturaGateway{
 
             return listEntity;
         }catch(Exception e){
-            throw new DataBaseException("Falha na persistencia do cadastro de viatura");
+            throw new DataBaseException("Falha na busca de viaturas cadastradas");
         }
     }
 }
