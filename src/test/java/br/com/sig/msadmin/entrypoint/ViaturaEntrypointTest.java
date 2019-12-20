@@ -1,9 +1,5 @@
 package br.com.sig.msadmin.entrypoint;
 
-import java.io.InputStream;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,22 +7,14 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import br.com.sig.msadmin.core.entity.ViaturaEntity;
 import br.com.sig.msadmin.core.usecase.CadastrarViaturaUseCase;
 import br.com.sig.msadmin.entrypoint.entity.ViaturaHttpModel;
 
 
-// @RunWith(SpringRunner.class)
-// @WebMvcTest(ViaturaEntrypoint.class)
 @RunWith(MockitoJUnitRunner.class)
 public class ViaturaEntrypointTest {
     
@@ -35,12 +23,7 @@ public class ViaturaEntrypointTest {
 
     @Mock
     private CadastrarViaturaUseCase useCase;
-    
-    // @Autowired
-    // private MockMvc mockMvc;
 
-    // private String json = "{'ano': 2013, 'placa': 'API-8133', 'fabricante': 'Ford', 'quilometragem_atual': 1800, 'quilometragem_inicial': 1000 }";
-    
     private ViaturaEntity viatura = ViaturaEntity.builder()
                                                  .ano(2010)
                                                  .placa("API-7777")

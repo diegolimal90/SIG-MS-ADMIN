@@ -24,19 +24,19 @@ public class ViaturaTable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "cd_ano_viatura")
+    @Column(name = "cd_ano_viatura", nullable=false)
     private Integer ano;
 
-    @Column(name = "nm_placa_viatura")
+    @Column(name = "nm_placa_viatura", nullable=false)
     private String placa;
     
-    @Column(name = "nm_fabricante_viatura")
+    @Column(name = "nm_fabricante_viatura", nullable=false)
     private String fabricante;
 
-    @Column(name = "vl_quilometragem_atual_viatura")
+    @Column(name = "vl_quilometragem_atual_viatura", nullable=false)
     private Integer quilometragem_atual;
 
-    @Column(name = "vl_quilometragem_inicial_viatura")
+    @Column(name = "vl_quilometragem_inicial_viatura", nullable=false)
     private Integer quilometragem_inicial;
 
     @Column(name = "dt_cadastro")
