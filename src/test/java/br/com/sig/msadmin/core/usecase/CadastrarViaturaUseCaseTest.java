@@ -12,7 +12,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import br.com.sig.msadmin.core.entity.ViaturaEntity;
 import br.com.sig.msadmin.core.usecase.CadastrarViaturaUseCase;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class CadastrarViaturaUseCaseTest {
 
     @Mock
