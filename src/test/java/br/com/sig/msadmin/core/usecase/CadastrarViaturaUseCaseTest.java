@@ -59,5 +59,6 @@ public class CadastrarViaturaUseCaseTest {
         Mockito.doThrow(new NullPointerException("Entidade vazia")).when(useCase).cadastrarViatura(Mockito.any(ViaturaEntity.class));
 
         ViaturaEntity teste = useCase.cadastrarViatura(vazio);
+        System.out.println(teste);
     }
 }
