@@ -1,8 +1,5 @@
 package br.com.sig.msadmin.entrypoint.entity;
 
-import java.util.Date;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -34,10 +31,6 @@ public class UnidadeHttpModel {
 	private String estado;
 	private String referencia;
 	private Integer status;
-	
-	@JsonProperty("data_cadastro")
-	@JsonFormat(pattern="dd/MM/yyyy")
-	private Date dataCadastro;
 	
 	@JsonProperty("usuario_cadastro")
 	private Long idCadastro;

@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.core.usecase;
 
+import java.sql.Timestamp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +15,11 @@ public class CadastrarUnidadeUseCase {
 	private UnidadeGateway gateway;
 	
 	public UnidadeEntity cadastrarUnidade(UnidadeEntity entity){
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		entity.setDataCadastro(timestamp);
+		
 		entity.setStatus(1);
+		
 		
 		return gateway.salvarUnidade(entity);
 	}

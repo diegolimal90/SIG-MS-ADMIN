@@ -23,7 +23,6 @@ public class UnidadeHttpModelMapper {
 				.estado(e.getEstado())
 				.referencia(e.getReferencia())
 				.status(e.getStatus())
-				.dataCadastro(e.getDataCadastro())
 				.idCadastro(e.getIdCadastro())
 				.build())
 				.orElse(new UnidadeEntity());
@@ -45,7 +44,6 @@ public class UnidadeHttpModelMapper {
 				.estado(e.getEstado())
 				.referencia(e.getReferencia())
 				.status(e.getStatus())
-				.dataCadastro(e.getDataCadastro())
 				.idCadastro(e.getIdCadastro())
 				.build())
 				.orElse(new UnidadeHttpModel());

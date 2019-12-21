@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.entrypoint;
 
+import java.sql.Timestamp;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,21 +27,23 @@ public class UnidadeEntrypointTest {
 	
 	@Test
 	public void CadastrarUnidadeEntrypoint_success() {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		
 		UnidadeEntity unidade = UnidadeEntity.builder()
 			.id(1L).tipo("base").nome("Teste unidade").cep("11700190").tipoLogradouro("Rua").logradouro("Espírito Santo")
 			.numero(391).complemento("apto 122").regiao("Baixada Santista").bairro("Canto do Forte").cidade("Praia Grande").estado("SP")
-			.referencia("Proximo a Fatec").dataCadastro(null).idCadastro(22L).status(1).build();
+			.referencia("Proximo a Fatec").dataCadastro(timestamp).idCadastro(22L).status(1).build();
 		
 		UnidadeHttpModel httpmodel = UnidadeHttpModel.builder()
-				.id(1L).tipo("base").nome("Teste unidade").cep("11700190").tipoLogradouro("Rua").logradouro("Espírito Santo")
-				.numero(391).complemento("apto 122").regiao("Baixada Santista").bairro("Canto do Forte").cidade("Praia Grande").estado("SP")
-				.referencia("Proximo a Fatec").dataCadastro(null).idCadastro(22L).build();
+			.id(1L).tipo("base").nome("Teste unidade").cep("11700190").tipoLogradouro("Rua").logradouro("Espírito Santo")
+			.numero(391).complemento("apto 122").regiao("Baixada Santista").bairro("Canto do Forte").cidade("Praia Grande").estado("SP")
+			.referencia("Proximo a Fatec").idCadastro(22L).build();
 		
 		Mockito.when(useCase.cadastrarUnidade(Mockito.any(UnidadeEntity.class))).thenReturn(unidade);
 		
-		ResponseEntity<UnidadeHttpModel> response=  entrypoint.cadastrarUnidade(httpmodel);
+		ResponseEntity<UnidadeHttpModel> response = entrypoint.cadastrarUnidade(httpmodel);
 		
 		Assert.assertEquals(HttpStatus.OK, response.getStatusCode());	
-		
 	}	
+	
 }
