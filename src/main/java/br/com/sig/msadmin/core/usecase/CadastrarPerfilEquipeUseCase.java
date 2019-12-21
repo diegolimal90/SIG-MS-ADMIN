@@ -12,9 +12,7 @@ public class CadastrarPerfilEquipeUseCase {
 	@Autowired
 	private PerfilEquipeGateway gateway;
 	
-	public PerfilEquipeEntity cadastrarPerfilEqupe(PerfilEquipeEntity entity){
-		
-		
+	public PerfilEquipeEntity cadastrarPerfilEquipe(PerfilEquipeEntity entity){
 		return gateway.salvarPerfil(entity);
 	}
 	

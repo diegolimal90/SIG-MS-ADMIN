@@ -29,7 +29,7 @@ public class PerfilEquipeEntrypoint {
 	@RequestMapping(value="/", method = RequestMethod.POST)
 	public ResponseEntity<PerfilEquipeHttpModel> cadastrarPerfilEquipe(@RequestBody PerfilEquipeHttpModel httpModel){
 		PerfilEquipeEntity entity = PerfilEquipeHttpModelMapper.to(httpModel);
-		entity = cadastrarPerfilEquipeUseCase.cadastrarPerfilEqupe(entity);
+		entity = cadastrarPerfilEquipeUseCase.cadastrarPerfilEquipe(entity);
 		PerfilEquipeHttpModel response = PerfilEquipeHttpModelMapper.from(entity);
 			
 		return ResponseEntity.ok().body(response);

@@ -7,7 +7,6 @@ import java.util.List;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -34,11 +33,11 @@ public class PesquisarPerfilEquipeDataProviderTest {
 		
 		PerfilEquipeTable perfilEquipe = PerfilEquipeTable.builder()
 				.id(1L)
-				.nome("")
-				.sigla("")
+				.nome("perfil Equipe")
+				.sigla("PEQ")
 				.veiculoId(2L)
 				.profissionaisId(3L)
-				.descricaoEquipamentos("")
+				.descricaoEquipamentos("Teste de equipamentos do perfil de equipe")
 				.qtEquipamento(2)
 				.dataCadastro(date)
 				.idCadastro(1L)
@@ -59,11 +58,11 @@ public class PesquisarPerfilEquipeDataProviderTest {
 		
 		PerfilEquipeTable perfilEquipe = PerfilEquipeTable.builder()
 				.id(1L)
-				.nome("")
-				.sigla("")
+				.nome("perfil Equipe")
+				.sigla("PEQ")
 				.veiculoId(2L)
 				.profissionaisId(3L)
-				.descricaoEquipamentos("")
+				.descricaoEquipamentos("Teste de equipamentos do perfil de equipe")
 				.qtEquipamento(2)
 				.dataCadastro(date)
 				.idCadastro(1L)
