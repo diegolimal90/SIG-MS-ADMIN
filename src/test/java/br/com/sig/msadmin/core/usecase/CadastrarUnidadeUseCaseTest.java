@@ -5,17 +5,23 @@ import java.sql.Timestamp;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import br.com.sig.msadmin.core.entity.UnidadeEntity;
+import br.com.sig.msadmin.dataprovider.UnidadeDataProvider;
+import br.com.sig.msadmin.exception.DataBaseException;
 
-@RunWith(MockitoJUnitRunner.Silent.class)
+@RunWith(MockitoJUnitRunner.class)
 public class CadastrarUnidadeUseCaseTest {
 
-    @Mock
+	@InjectMocks 
     private CadastrarUnidadeUseCase useCase;
+    
+	@Mock
+    private UnidadeDataProvider data;
        
 
     UnidadeEntity unidade = UnidadeEntity.builder()
@@ -34,19 +40,19 @@ public class CadastrarUnidadeUseCaseTest {
         unidadeModelo.setDataCadastro(timestamp);
         unidadeModelo.setStatus(1);
 
-        Mockito.when(useCase.cadastrarUnidade(Mockito.any(UnidadeEntity.class))).thenReturn(unidadeModelo);
+        Mockito.when(data.salvarUnidade(Mockito.any(UnidadeEntity.class))).thenReturn(unidadeModelo);
         
         UnidadeEntity response = useCase.cadastrarUnidade(unidade);
 
-        Assert.assertNotEquals(unidade, response);
+        Assert.assertEquals(unidadeModelo, response);
 
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = DataBaseException.class)
     public void CadastrarUnidadeUseCase_exception(){
         UnidadeEntity vazio = UnidadeEntity.builder().build();
 
-        Mockito.doThrow(new NullPointerException("Entidade vazia")).when(useCase).cadastrarUnidade(Mockito.any(UnidadeEntity.class));
+        Mockito.doThrow(new DataBaseException("Falha na persistencia do cadastro de unidade")).when(data).salvarUnidade(Mockito.any(UnidadeEntity.class));
 
         UnidadeEntity teste = useCase.cadastrarUnidade(vazio);
     }
