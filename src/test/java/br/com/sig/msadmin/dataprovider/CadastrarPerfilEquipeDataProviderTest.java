@@ -5,7 +5,6 @@ import java.util.Date;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -33,11 +32,11 @@ public class CadastrarPerfilEquipeDataProviderTest {
 
 		PerfilEquipeEntity perfilEquipe = PerfilEquipeEntity.builder()
 			.id(1L)
-			.nome("")
-			.sigla("")
+			.nome("Teste de perfil de equipe")
+			.sigla("PEQ")
 			.veiculoId(2L)
 			.profissionaisId(3L)
-			.descricaoEquipamentos("")
+			.descricaoEquipamentos("Teste de cadastrar perfil de equipe")
 			.qtEquipamento(2)
 			.dataCadastro(date)
 			.idCadastro(1L)
@@ -57,11 +56,11 @@ public class CadastrarPerfilEquipeDataProviderTest {
 		
 		PerfilEquipeEntity perfilEquipe = PerfilEquipeEntity.builder()
 				.id(1L)
-				.nome("")
-				.sigla("")
+				.nome("Teste de perfil de equipe")
+				.sigla("PEQ")
 				.veiculoId(2L)
 				.profissionaisId(3L)
-				.descricaoEquipamentos("")
+				.descricaoEquipamentos("Teste de cadastrar perfil de equipe")
 				.qtEquipamento(2)
 				.dataCadastro(date)
 				.idCadastro(1L)
