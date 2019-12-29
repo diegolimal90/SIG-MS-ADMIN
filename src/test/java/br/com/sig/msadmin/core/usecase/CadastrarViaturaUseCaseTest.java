@@ -5,20 +5,25 @@ import java.sql.Timestamp;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import br.com.sig.msadmin.core.entity.ViaturaEntity;
 import br.com.sig.msadmin.core.usecase.CadastrarViaturaUseCase;
+import br.com.sig.msadmin.dataprovider.ViaturaDataProvider;
+import br.com.sig.msadmin.exception.DataBaseException;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
 public class CadastrarViaturaUseCaseTest {
 
-    @Mock
+    @InjectMocks
     private CadastrarViaturaUseCase useCase;
-       
 
+    @Mock
+    private ViaturaDataProvider dataProvider;
+    
     private ViaturaEntity viatura = ViaturaEntity.builder()
                                                  .ano(2010)
                                                  .placa("API-7777")
@@ -41,24 +46,19 @@ public class CadastrarViaturaUseCaseTest {
 
         cloneViatura.setDataCadastro(timestamp);
 
-        Mockito.when(useCase.cadastrarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(cloneViatura);
+        Mockito.when(dataProvider.salvarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(cloneViatura);
 
-        Assert.assertNotEquals(viatura, cloneViatura);
+        ViaturaEntity response = useCase.cadastrarViatura(viatura);        
+        Assert.assertEquals(viatura, response);
 
     }
-
-    @Test(expected = NullPointerException.class)
+    
+    @Test(expected = DataBaseException.class)
     public void CadastrarViaturaUseCase_exception(){
-        
         ViaturaEntity vazio = ViaturaEntity.builder().build();
 
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        Mockito.doThrow(new DataBaseException("Falha na persistencia do cadastro da viatura.")).when(dataProvider).salvarViatura(Mockito.any(ViaturaEntity.class));
 
-        cloneViatura.setDataCadastro(timestamp);
-
-        Mockito.doThrow(new NullPointerException("Entidade vazia")).when(useCase).cadastrarViatura(Mockito.any(ViaturaEntity.class));
-
-        ViaturaEntity teste = useCase.cadastrarViatura(vazio);
-        System.out.println(teste);
-    }
+        ViaturaEntity erro = useCase.cadastrarViatura(vazio);
+    }    
 }

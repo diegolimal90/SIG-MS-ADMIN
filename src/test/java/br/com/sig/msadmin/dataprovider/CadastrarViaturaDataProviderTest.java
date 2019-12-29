@@ -24,7 +24,6 @@ public class CadastrarViaturaDataProviderTest {
     @Mock
     private ViaturaRepository viaturaRepository;
 
-    //TODO Incluir outra solução alterando as datas
     private Date date = new Date();
 
     private ViaturaEntity viatura = ViaturaEntity.builder()

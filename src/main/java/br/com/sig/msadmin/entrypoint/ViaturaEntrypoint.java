@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +32,7 @@ public class ViaturaEntrypoint{
         entity = cadastrarViaturaUseCase.cadastrarViatura(entity);
         ViaturaHttpModel response = ViaturaHttpModelMapper.from(entity);
 
-        return ResponseEntity.ok().body(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

@@ -1,5 +1,8 @@
 package br.com.sig.msadmin.entrypoint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.sig.msadmin.core.entity.ViaturaEntity;
 import br.com.sig.msadmin.core.usecase.CadastrarViaturaUseCase;
+import br.com.sig.msadmin.core.usecase.PesquisarViaturaUseCase;
 import br.com.sig.msadmin.entrypoint.entity.ViaturaHttpModel;
 
 
@@ -22,7 +26,10 @@ public class ViaturaEntrypointTest {
 	private ViaturaEntrypoint entrypoint;
 
     @Mock
-    private CadastrarViaturaUseCase useCase;
+    private CadastrarViaturaUseCase CadastrarViaturaUseCase;
+    
+    @Mock
+    private PesquisarViaturaUseCase PesquisarViaturaUseCase;
 
     private ViaturaEntity viatura = ViaturaEntity.builder()
                                                  .ano(2010)
@@ -41,26 +48,26 @@ public class ViaturaEntrypointTest {
                                                          .build();
 
     @Test
-	public void cadastrarUnidadeEntrypoint_success() {
+	public void cadastrarViaturaEntrypoint_success() {
 
-		Mockito.when(useCase.cadastrarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(viatura);
+		Mockito.when(CadastrarViaturaUseCase.cadastrarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(viatura);
 		
 		ResponseEntity<ViaturaHttpModel> response = entrypoint.cadastrarViatura(httpModel);
-
-		Assert.assertEquals(HttpStatus.OK, response.getStatusCode());	
+		
+		Assert.assertEquals(HttpStatus.CREATED, response.getStatusCode());	
 		
     }
     
-    // @Test
-    // public void cadastrarUnidadeEntrypoint_exception(){
-    //     httpModel.setAno(null);
+    @Test
+	public void pesquisarViaturaEntrypoint_success() {
 
-    //     Mockito.doThrow(new DataBaseException("Falha na persistência")).when(useCase.cadastrarViatura(Mockito.any(ViaturaEntity.class)));
-        
-    //     //Mockito.when(useCase.cadastrarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(viatura);
-
-    //     ResponseEntity<ViaturaHttpModel> response = entrypoint.cadastrarViatura(httpModel);
-
-	// 	Assert.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());	
-    // }
+		List<ViaturaEntity> listEntity = new ArrayList<>();
+		listEntity.add(viatura);
+		
+		Mockito.when(PesquisarViaturaUseCase.pesquisarViatura()).thenReturn(listEntity);
+		
+		ResponseEntity<List<ViaturaHttpModel>> listResponse = entrypoint.pesquisarViatura();
+		
+		Assert.assertEquals(HttpStatus.OK, listResponse.getStatusCode());
+	}
 }
