@@ -6,8 +6,8 @@ import br.com.sig.msadmin.core.entity.PerfilEquipeEntity;
 
 public interface PerfilEquipeGateway {
 
-	PerfilEquipeEntity salvarPerfil(PerfilEquipeEntity entity);
+	PerfilEquipeEntity cadastrarPerfilEquipe(PerfilEquipeEntity entity);
 	
-	List<PerfilEquipeEntity> pesquisarPerfil();
+	List<PerfilEquipeEntity> pesquisarPerfilEquipe();
 	
 }

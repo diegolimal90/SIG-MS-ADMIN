@@ -48,7 +48,7 @@ public class PesquisarPerfilEquipeDataProviderTest {
 
 		Mockito.when(perfilEquipeRepository.findAll()).thenReturn(listPerfilEquipe);
 
-		List<PerfilEquipeEntity> result = dataProvider.pesquisarPerfil();
+		List<PerfilEquipeEntity> result = dataProvider.pesquisarPerfilEquipe();
 
 		Assert.assertThat(result, Matchers.any(List.class));
 	}
@@ -73,6 +73,6 @@ public class PesquisarPerfilEquipeDataProviderTest {
 		
 		Mockito.doThrow(new DataBaseException("Falha na persistência")).when(perfilEquipeRepository).findAll();
 		
-		dataProvider.pesquisarPerfil();
+		dataProvider.pesquisarPerfilEquipe();
 	}
 }

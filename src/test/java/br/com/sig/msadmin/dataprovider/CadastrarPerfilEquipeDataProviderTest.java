@@ -46,7 +46,7 @@ public class CadastrarPerfilEquipeDataProviderTest {
 		
 		Mockito.when(perfilEquipeRepository.save(Mockito.any(PerfilEquipeTable.class))).thenReturn(table);
 
-		PerfilEquipeEntity result = dataprovider.salvarPerfil(perfilEquipe);
+		PerfilEquipeEntity result = dataprovider.cadastrarPerfilEquipe(perfilEquipe);
 
 		Assert.assertThat(result, Matchers.any(PerfilEquipeEntity.class));
 	}
@@ -68,7 +68,7 @@ public class CadastrarPerfilEquipeDataProviderTest {
 
 		Mockito.doThrow(new DataBaseException("Falha na persistência")).when(perfilEquipeRepository).save(Mockito.any(PerfilEquipeTable.class));
 
-		dataprovider.salvarPerfil(perfilEquipe);
+		dataprovider.cadastrarPerfilEquipe(perfilEquipe);
 	}
 
 }

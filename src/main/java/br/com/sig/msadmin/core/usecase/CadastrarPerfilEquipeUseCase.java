@@ -17,7 +17,7 @@ public class CadastrarPerfilEquipeUseCase {
 	public PerfilEquipeEntity cadastrarPerfilEquipe(PerfilEquipeEntity entity){		
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		entity.setDataCadastro(timestamp);
-		return gateway.salvarPerfil(entity);
+		return gateway.cadastrarPerfilEquipe(entity);
 	}
 	
 }

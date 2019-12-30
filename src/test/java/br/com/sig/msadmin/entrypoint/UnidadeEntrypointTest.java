@@ -1,18 +1,25 @@
 package br.com.sig.msadmin.entrypoint;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.sig.msadmin.core.entity.UnidadeEntity;
 import br.com.sig.msadmin.core.usecase.CadastrarUnidadeUseCase;
@@ -22,6 +29,8 @@ import br.com.sig.msadmin.entrypoint.entity.UnidadeHttpModel;
 @RunWith(MockitoJUnitRunner.class)
 public class UnidadeEntrypointTest {
 
+	private MockMvc mockMvc;
+	
 	@InjectMocks
 	private UnidadeEntrypoint entrypoint;
 	
@@ -31,8 +40,13 @@ public class UnidadeEntrypointTest {
 	@Mock
 	private PesquisarUnidadeUseCase pesquisarUseCase;
 	
+	@Before
+	public void setUp() {
+		this.mockMvc = MockMvcBuilders.standaloneSetup(this.entrypoint).build();
+	}
+	
 	@Test
-	public void CadastrarUnidadeEntrypoint_success() {
+	public void CadastrarUnidadeEntrypointStatusCode_201() throws JsonProcessingException, Exception {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		
 		UnidadeEntity unidade = UnidadeEntity.builder()
@@ -47,13 +61,16 @@ public class UnidadeEntrypointTest {
 		
 		Mockito.when(cadastrarUseCase.cadastrarUnidade(Mockito.any(UnidadeEntity.class))).thenReturn(unidade);
 		
-		ResponseEntity<UnidadeHttpModel> response = entrypoint.cadastrarUnidade(httpmodel);
-		
-		Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
+		this.mockMvc.perform(
+				MockMvcRequestBuilders
+				.post("/unidades/")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content( new ObjectMapper().writeValueAsString(httpmodel) )
+				).andExpect(status().isCreated());	
 	}	
 	
 	@Test
-	public void PesquisarUnidadeEntrypoint_success() {
+	public void PesquisarUnidadeEntrypointStatusCode_200() throws Exception {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		
 		UnidadeEntity unidade = UnidadeEntity.builder()
@@ -66,9 +83,10 @@ public class UnidadeEntrypointTest {
 		
 		Mockito.when(pesquisarUseCase.pesquisarUnidades()).thenReturn(listEntity);
 		
-		ResponseEntity<List<UnidadeHttpModel>> listResponse = entrypoint.pesquisarUnidades();
-		
-		Assert.assertEquals(HttpStatus.OK, listResponse.getStatusCode());
+		this.mockMvc.perform(
+				MockMvcRequestBuilders
+				.get("/unidades/")
+				).andExpect(status().isOk());
 	}
 	
 }

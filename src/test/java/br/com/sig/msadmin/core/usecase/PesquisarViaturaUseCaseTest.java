@@ -13,7 +13,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import br.com.sig.msadmin.core.entity.ViaturaEntity;
 import br.com.sig.msadmin.dataprovider.ViaturaDataProvider;
-import br.com.sig.msadmin.exception.DataBaseException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class PesquisarViaturaUseCaseTest {
@@ -45,12 +44,5 @@ public class PesquisarViaturaUseCaseTest {
         Assert.assertEquals(list, response);
 
     }
-
-    @Test(expected = DataBaseException.class)
-    public void PesquisarViaturaUseCase_exception(){
-
-        Mockito.doThrow(new DataBaseException("Falha na consulta de dados")).when(dataProvider).pesquisarViatura();
-
-        useCase.pesquisarViatura();
-    }
+    
 }

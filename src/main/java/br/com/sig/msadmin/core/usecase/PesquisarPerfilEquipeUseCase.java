@@ -14,8 +14,8 @@ public class PesquisarPerfilEquipeUseCase {
 	@Autowired
 	private PerfilEquipeGateway gateway;
 	
-	public List<PerfilEquipeEntity> pesquisarEquipe(){
-		return gateway.pesquisarPerfil();
+	public List<PerfilEquipeEntity> pesquisarPerfilEquipe(){
+		return gateway.pesquisarPerfilEquipe();
 	}
 	
 }

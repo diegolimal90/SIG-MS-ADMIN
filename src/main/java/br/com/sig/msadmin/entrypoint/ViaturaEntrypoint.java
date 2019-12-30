@@ -1,15 +1,16 @@
 package br.com.sig.msadmin.entrypoint;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.sig.msadmin.core.entity.ViaturaEntity;
 import br.com.sig.msadmin.core.usecase.CadastrarViaturaUseCase;
@@ -32,7 +33,13 @@ public class ViaturaEntrypoint{
         entity = cadastrarViaturaUseCase.cadastrarViatura(entity);
         ViaturaHttpModel response = ViaturaHttpModelMapper.from(entity);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        URI uri = ServletUriComponentsBuilder
+				.fromCurrentRequest()
+				.path("/{id}")
+				.buildAndExpand(response.getId())
+				.toUri();
+		
+		return ResponseEntity.created(uri).build();
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

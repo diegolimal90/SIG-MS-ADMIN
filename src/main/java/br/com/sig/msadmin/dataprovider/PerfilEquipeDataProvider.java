@@ -1,8 +1,6 @@
 package br.com.sig.msadmin.dataprovider;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ public class PerfilEquipeDataProvider implements PerfilEquipeGateway {
 	private PerfilEquipeRepository perfilRepository;
 
 	@Override
-	public PerfilEquipeEntity salvarPerfil(PerfilEquipeEntity entity) {
+	public PerfilEquipeEntity cadastrarPerfilEquipe(PerfilEquipeEntity entity) {
 
 		try {
 			PerfilEquipeTable table = PerfilEquipeMapper.from(entity);
@@ -31,15 +29,13 @@ public class PerfilEquipeDataProvider implements PerfilEquipeGateway {
 			entity = PerfilEquipeMapper.to(table);
 
 			return entity;
-		//TODO toda exceção que você nao sabe que pode ocorrer vc deve usar o Exception(exeção generica)
 		} catch (Exception e) {
-			//TODO utilizar lançamento de exceção DataBaseException que se encontra no pacote de exception
 			throw new DataBaseException("Falha na persistencia do cadastrar perfil de equipe");
 		}
 	}
 
 	@Override
-	public List<PerfilEquipeEntity> pesquisarPerfil() {
+	public List<PerfilEquipeEntity> pesquisarPerfilEquipe() {
 		List<PerfilEquipeEntity> listEntity = new ArrayList<>();
 		List<PerfilEquipeTable> listTable = new ArrayList<>();
 
