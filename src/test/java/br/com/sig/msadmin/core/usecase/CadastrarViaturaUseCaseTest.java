@@ -45,6 +45,7 @@ public class CadastrarViaturaUseCaseTest {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
         cloneViatura.setDataCadastro(timestamp);
+        viatura.setDataCadastro(timestamp);
 
         Mockito.when(dataProvider.salvarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(cloneViatura);
 
