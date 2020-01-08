@@ -60,6 +60,6 @@ public class CadastrarViaturaUseCaseTest {
 
         Mockito.doThrow(new DataBaseException("Falha na persistencia do cadastro da viatura.")).when(dataProvider).salvarViatura(Mockito.any(ViaturaEntity.class));
 
-        ViaturaEntity erro = useCase.cadastrarViatura(vazio);
+        useCase.cadastrarViatura(vazio);
     }    
 }
