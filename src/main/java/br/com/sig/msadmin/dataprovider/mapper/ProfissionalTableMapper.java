@@ -16,7 +16,6 @@ public class ProfissionalTableMapper {
 		return Optional.ofNullable(entity).map(e -> ProfissionalTable.builder()
 				.id(e.getId())
 				.nmProfissional(e.getNmProfissional())
-				.tpLogradouro(e.getTpLogradouro())
 				.endereco(fromEndereco(e))
 				.dtNasc(e.getDtNasc())
 				.nrRg(e.getNrRg())

@@ -10,7 +10,12 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import br.com.sig.msadmin.core.entity.ProfissionalEntity;
+import br.com.sig.msadmin.dataprovider.entity.BairroTable;
+import br.com.sig.msadmin.dataprovider.entity.CidadeTable;
+import br.com.sig.msadmin.dataprovider.entity.EnderecoTable;
+import br.com.sig.msadmin.dataprovider.entity.EstadoTable;
 import br.com.sig.msadmin.dataprovider.entity.ProfissionalTable;
+import br.com.sig.msadmin.dataprovider.entity.TipoLogradouroTable;
 import br.com.sig.msadmin.dataprovider.repository.ProfissionalRepository;
 import br.com.sig.msadmin.exception.DataBaseException;
 
@@ -34,6 +39,16 @@ public class CadastrarProfissionalDataProviderTest {
 		ProfissionalTable tableSaved = ProfissionalTable.builder()
 				.id(1L)
 				.nmProfissional("Fulano de Teste")
+				.endereco(EnderecoTable.builder()
+						.bairro(BairroTable.builder()
+								.cidade(CidadeTable.builder()
+										.estado(EstadoTable.builder()
+												.build())
+										.build())
+								.build())
+						.tpLogradouro(TipoLogradouroTable.builder()
+								.build())
+						.build())
 				.build();
 		
 		Mockito.when(profissionalRepository.save(Mockito.any(ProfissionalTable.class))).thenReturn(tableSaved);

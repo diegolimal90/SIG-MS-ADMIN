@@ -23,7 +23,6 @@ public class ProfissionalTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nmProfissional;
-	private String tpLogradouro;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="endereco_id")
