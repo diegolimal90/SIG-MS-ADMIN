@@ -2,6 +2,7 @@ package br.com.sig.msadmin.dataprovider.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +30,6 @@ public class TipoLogradouroTable {
 	private String nmTpLogradouro;
 	
 	@JsonBackReference
-	@OneToMany(mappedBy="tpLogradouro")
+	@OneToMany(mappedBy="tpLogradouro", cascade = CascadeType.ALL)
 	private List<EnderecoTable> enderecos;
 }

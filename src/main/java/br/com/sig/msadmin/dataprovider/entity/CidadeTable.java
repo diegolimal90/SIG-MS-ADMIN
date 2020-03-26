@@ -2,6 +2,7 @@ package br.com.sig.msadmin.dataprovider.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -29,13 +30,13 @@ public class CidadeTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="estado_id")
 	private EstadoTable estado;
 	private String nmCidade;
 	
 	@JsonBackReference
-	@OneToMany(mappedBy="cidade")
+	@OneToMany(mappedBy="cidade", cascade = CascadeType.ALL)
 	private List<BairroTable> bairros;
 	
 		

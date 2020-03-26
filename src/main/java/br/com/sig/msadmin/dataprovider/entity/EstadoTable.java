@@ -3,6 +3,7 @@ package br.com.sig.msadmin.dataprovider.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,7 @@ public class EstadoTable implements Serializable{
 	private String sgEstado;
 	
 	@JsonBackReference
-	@OneToMany(mappedBy="estado")
+	@OneToMany(mappedBy="estado", cascade = CascadeType.ALL)
 	private List<CidadeTable> cidades;
 	
 }
