@@ -23,6 +23,7 @@ public class ProfissionalTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nmProfissional;
+	private String dsMatricula;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="endereco_id")
