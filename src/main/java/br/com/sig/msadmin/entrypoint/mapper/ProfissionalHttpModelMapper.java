@@ -6,12 +6,14 @@ import br.com.sig.msadmin.core.entity.BairroEntity;
 import br.com.sig.msadmin.core.entity.CidadeEntity;
 import br.com.sig.msadmin.core.entity.EnderecoEntity;
 import br.com.sig.msadmin.core.entity.EstadoEntity;
+import br.com.sig.msadmin.core.entity.PaisEntity;
 import br.com.sig.msadmin.core.entity.ProfissionalEntity;
 import br.com.sig.msadmin.core.entity.TipoLogradouroEntity;
 import br.com.sig.msadmin.entrypoint.entity.BairroHttpModel;
 import br.com.sig.msadmin.entrypoint.entity.CidadeHttpModel;
 import br.com.sig.msadmin.entrypoint.entity.EnderecoHttpModel;
 import br.com.sig.msadmin.entrypoint.entity.EstadoHttpModel;
+import br.com.sig.msadmin.entrypoint.entity.PaisHttpModel;
 import br.com.sig.msadmin.entrypoint.entity.ProfissionalHttpModel;
 import br.com.sig.msadmin.entrypoint.entity.TipoLogradouroHttpModel;
 
@@ -65,6 +67,14 @@ public class ProfissionalHttpModelMapper {
 												.getCidade()
 												.getEstado()
 												.getSgEstado())
+										.pais(PaisHttpModel.builder()
+												.nomePais(e.getEndereco()
+												.getBairro()
+												.getCidade()
+												.getEstado()
+												.getPais()
+												.getNomePais())
+											.build())
 										.build())
 								.build())
 						.build())
@@ -110,6 +120,14 @@ public class ProfissionalHttpModelMapper {
 												.getCidade()
 												.getEstado()
 												.getSgEstado())
+										.pais(PaisEntity.builder()
+												.nomePais(e.getEndereco()
+												.getBairro()
+												.getCidade()
+												.getEstado()
+												.getPais()
+												.getNomePais())
+											.build())
 										.build())
 								.build())
 						.build())
@@ -118,7 +136,9 @@ public class ProfissionalHttpModelMapper {
 		        		.tpLogradouro(new TipoLogradouroEntity())
 		        		.bairro(BairroEntity.builder()
 		        				.cidade(CidadeEntity.builder()
-										.estado(new EstadoEntity())
+										.estado(EstadoEntity.builder()
+												.pais(new PaisEntity())
+												.build())
 										.build())
 								.build())
 		        		.build());

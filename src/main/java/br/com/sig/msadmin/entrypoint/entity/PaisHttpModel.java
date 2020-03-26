@@ -1,4 +1,4 @@
-package br.com.sig.msadmin.core.entity;
+package br.com.sig.msadmin.entrypoint.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TipoLogradouroEntity {
-
+public class PaisHttpModel {
 	private Long id;
 	
-	private String nmTpLogradouro;
-	
+	private String nomePais;
 }

@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TipoLogradouroEntity {
-
+public class TipoProfissionalEntity {
 	private Long id;
 	
-	private String nmTpLogradouro;
+	private String idProfissional;
+	private String dataValidade;
 	
 }

@@ -9,10 +9,10 @@ import br.com.sig.msadmin.core.gateway.ClienteGateway;
 @Component
 public class CadastrarClienteUseCase {
 
-    @Autowired
-	private ClienteGateway gateway;
-
-	public ClienteEntity cadastrarCliente(ClienteEntity entity){		
-		return gateway.salvarCliente(entity);
-	}
+//    @Autowired
+//	private ClienteGateway gateway;
+//
+//	public ClienteEntity cadastrarCliente(ClienteEntity entity){		
+//		return gateway.salvarCliente(entity);
+//	}
 }

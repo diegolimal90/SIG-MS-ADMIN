@@ -1,7 +1,6 @@
 package br.com.sig.msadmin.core.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,7 +17,7 @@ public class EstadoEntity implements Serializable{
 	private Long id;
 	private String nmEstado;
 	private String sgEstado;
-	
-	private List<CidadeEntity> cidades;
+
+	private PaisEntity pais;
 	
 }
