@@ -46,7 +46,7 @@ public class ClienteTable{
     private String cnpj;
 
     //TODO Alterar para List<EnderecoEntity>
-    private String endereco;
+    // private String endereco;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<TelefoneTable> telefones;
@@ -55,8 +55,8 @@ public class ClienteTable{
     
     @Column(name = "ds_contrato")
     private String contrato;
-    @OneToOne(mappedBy = "cliente")
-    private ResponsavelTable responsavelContrato;
+    // @OneToOne(mappedBy = "cliente")
+    // private ResponsavelTable responsavelContrato;
 
     @Column(name = "dt_nascimento")
     private Date dataNascimento;

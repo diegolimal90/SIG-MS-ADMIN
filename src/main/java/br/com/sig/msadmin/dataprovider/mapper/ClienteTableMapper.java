@@ -9,7 +9,7 @@ import br.com.sig.msadmin.core.entity.TelefoneEntity;
 import br.com.sig.msadmin.dataprovider.entity.ClienteTable;
 import br.com.sig.msadmin.dataprovider.entity.TelefoneTable;
 
-public class ClienteMapper{
+public class ClienteTableMapper{
 
     public static ClienteEntity to(ClienteTable table){
         return Optional.ofNullable(table).map(e -> ClienteEntity.builder()
@@ -21,16 +21,18 @@ public class ClienteMapper{
                 .rg(e.getRg())
                 .cpf(e.getCpf())
                 .cnpj(e.getCnpj())
-                .endereco(e.getEndereco())
+                //.endereco(e.getEndereco())
                 .telefones(toTelefone(e))
                 .email(e.getEmail())
                 .contrato(e.getContrato())
-                .responsavelContrato(e.getResponsavelContrato())
+                //.responsavelContrato(e.getResponsavelContrato())
                 .dataNascimento(e.getDataNascimento())
                 .dataFundacao(e.getDataFundacao())
                 .build())
                 .orElse(new ClienteEntity());
     }
+
+    //TODO Fazer conversão responsavelContrato
 
     private static List<TelefoneEntity> toTelefone(ClienteTable table){
         List<TelefoneEntity> telefones = new ArrayList<>();
@@ -67,11 +69,11 @@ public class ClienteMapper{
                 .rg(e.getRg())
                 .cpf(e.getCpf())
                 .cnpj(e.getCnpj())
-                .endereco(e.getEndereco())
+                //.endereco(e.getEndereco())
                 .telefones(fromTelefone(e))
                 .email(e.getEmail())
                 .contrato(e.getContrato())
-                .responsavelContrato(e.getResponsavelContrato())
+                //.responsavelContrato(e.getResponsavelContrato())
                 .dataNascimento(e.getDataNascimento())
                 .dataFundacao(e.getDataFundacao())
                 .build())

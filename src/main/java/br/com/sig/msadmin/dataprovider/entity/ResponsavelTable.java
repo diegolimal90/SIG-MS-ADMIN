@@ -30,9 +30,9 @@ public class ResponsavelTable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="cliente_id")
-    private ClienteTable cliente;
+    // @ManyToOne(fetch=FetchType.EAGER)
+    // @JoinColumn(name="cliente_id")
+    // private ClienteTable cliente;
 
     @Column(name = "nm_cliente")
     private String nome;
@@ -43,7 +43,7 @@ public class ResponsavelTable{
     private String rg;
 
     //TODO Alterar para List<EnderecoEntity>
-    private List<EnderecoTable> endereco;
+    // private List<EnderecoTable> endereco;
     @OneToMany(mappedBy = "responsavel", cascade = CascadeType.ALL)
     private List<TelefoneTable> telefones;
     @Column(name = "ds_email")
