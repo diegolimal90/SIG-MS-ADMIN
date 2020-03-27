@@ -27,7 +27,7 @@ public class PaisTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nomePais;
+	private String nmPais;
 	
 	@JsonBackReference
 	@OneToMany(mappedBy="pais", cascade = CascadeType.ALL)

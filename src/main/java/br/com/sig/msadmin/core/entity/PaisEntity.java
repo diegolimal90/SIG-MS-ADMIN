@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class PaisEntity {
 	private Long id;
 	
-	private String nomePais;
+	private String nmPais;
 }
