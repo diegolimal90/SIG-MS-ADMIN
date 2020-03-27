@@ -10,17 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfissionalEntity {
+	
 	private Long id;
 	private String nmProfissional;
-	private String tpLogradouro;
-	private String dsEndereço;
-	private String dsNumero;
-	private String dsComplemento;
-	private String nrCep;
-	private String nmBairro;
-	private String nmEstado;
-	private String nmCidade;
-	private String nmPais;
+	private String dsMatricula;
+	
+	private EnderecoEntity endereco;
 	private String dtNasc;
 	private String nrRg;
 	private String nrCpf;

@@ -1,5 +1,6 @@
 package br.com.sig.msadmin.dataprovider.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,9 +24,9 @@ public class ProfissionalTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String nmProfissional;
-	private String tpLogradouro;
+	private String dsMatricula;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name="endereco_id")
 	private EnderecoTable endereco;
 	private String dtNasc;
