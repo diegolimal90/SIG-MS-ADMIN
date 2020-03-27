@@ -28,16 +28,17 @@ public class ArchitectureTest {
 	 * DataProvider
 	 */
 	public static final String DATAPROVIDER_PACKAGE_PREFIX = PACKAGE_PREFIX + ".dataproviders";
-	public static final String MAPPER_DATAPROVIDER_PACKAGE_PREFIX = DATAPROVIDER_PACKAGE_PREFIX + ".mappers";
-	public static final String ENTITIES_DATAPROVIDER_PACKAGE_PREFIX = DATAPROVIDER_PACKAGE_PREFIX + ".entities";
+	public static final String FEIGN_DATAPROVIDER_PACKAGE_PREFIX = DATAPROVIDER_PACKAGE_PREFIX + ".feign";
+	public static final String MAPPER_DATAPROVIDER_PACKAGE_PREFIX = DATAPROVIDER_PACKAGE_PREFIX + ".mapper";
+	public static final String ENTITIES_DATAPROVIDER_PACKAGE_PREFIX = DATAPROVIDER_PACKAGE_PREFIX + ".entity";
 	public static final String REPOSITORY_DATAPROVIDER_PACKAGE_PREFIX = DATAPROVIDER_PACKAGE_PREFIX + ".repository";
 	
 	/**
 	 * Entrypoint
 	 */
 	public static final String ENTRYPOINT_PACKAGE_PREFIX = PACKAGE_PREFIX + ".entrypoints";
-	public static final String MAPPER_ENTRYPOINT_PACKAGE_PREFIX = ENTRYPOINT_PACKAGE_PREFIX + ".mappers";
-	public static final String ENTITIES_ENTRYPOINT_PACKAGE_PREFIX = "..entrypoints.entities..";
+	public static final String MAPPER_ENTRYPOINT_PACKAGE_PREFIX = ENTRYPOINT_PACKAGE_PREFIX + ".mapper";
+	public static final String ENTITIES_ENTRYPOINT_PACKAGE_PREFIX = "..entrypoints.entity..";
 	
 	/**
 	 * Core
@@ -46,7 +47,7 @@ public class ArchitectureTest {
 	public static final String USECASE_PACKAGE_PREFIX = CORE_PACKAGE_PREFIX + ".usecase";
 	public static final String GATEWAY_PACKAGE_PREFIX = CORE_PACKAGE_PREFIX + ".gateway";
 	public static final String UTIL_PACKAGE_PREFIX = CORE_PACKAGE_PREFIX + ".util";
-	public static final String ENTITY_CORE_PACKAGE_PREFIX = "..core.entities..";
+	public static final String ENTITY_CORE_PACKAGE_PREFIX = "..core.entity..";
 	
 	public static final String LOMBOK_BUILDER_ANNOTATION = "builder";
 	public static final String MAPPER_SUFFIX = "Mapper";
@@ -58,7 +59,7 @@ public class ArchitectureTest {
 	*/
 	public static final String DATAPROVIDER_SUFFIX = "DataProvider";
 	public static final String REPOSITORY_DATAPROVIDER_SUFFIX = "Repository";
-	public static final String FEIGN_DATAPROVIDER_SUFFIX = "Feign";
+	public static final String FEIGN_DATAPROVIDER_SUFFIX = "FeignClient";
 	public static final String ENTITIES_DATAPROVIDER_SUFFIX = "Table";
 	public static final String ENTITIES_FEIGN_DATAPROVIDER_SUFFIX = "Feign";
 	
@@ -132,6 +133,18 @@ public class ArchitectureTest {
 	@ArchTest
 	static final ArchRule repository_annotation_test = ArchRuleDefinition.classes().that().resideInAPackage(REPOSITORY_DATAPROVIDER_PACKAGE_PREFIX)
 			.should().beAnnotatedWith("Repository");
+	
+
+	/**
+	 *Regra sufixo para Repository 
+	 */
+	@ArchTest
+	static final ArchRule feign_package_test = ArchRuleDefinition.classes().that().resideInAPackage(FEIGN_DATAPROVIDER_PACKAGE_PREFIX)
+			.should().haveSimpleNameEndingWith(FEIGN_DATAPROVIDER_SUFFIX);
+	
+	@ArchTest
+	static final ArchRule feign_annotation_test = ArchRuleDefinition.classes().that().resideInAPackage(FEIGN_DATAPROVIDER_PACKAGE_PREFIX)
+			.should().beAnnotatedWith("FeignClient");
 	
 	/**
 	 *Regra para Entity Core 
