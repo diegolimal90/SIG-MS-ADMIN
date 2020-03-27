@@ -4,6 +4,6 @@ import br.com.sig.msadmin.core.entity.ClienteEntity;
 
 public interface ClienteGateway {
 
-	ClienteEntity salvarCliente(ClienteEntity entity);
+	ClienteEntity cadastrarCliente(ClienteEntity entity);
 	
 }
