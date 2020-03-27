@@ -28,6 +28,10 @@ public class TelefoneTable {
     @JoinColumn(name="cliente_id")
     private ClienteTable cliente;
     
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="responsavel_id")
+    private ResponsavelTable responsavel;
+
     private String telefone;
 
 }

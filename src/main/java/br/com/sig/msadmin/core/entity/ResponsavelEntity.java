@@ -12,27 +12,19 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClienteEntity{
+public class ResponsavelEntity{
 
     private Long id;
-    private Integer tipoCliente;
 
     private String nome;
-    private String nomeSocial;
-    private String nomeFantasia;
 
-    private String rg;
     private String cpf;
-    private String cnpj;
+    private String rg;
 
     private List<EnderecoEntity> enderecos;
     private List<TelefoneEntity> telefones;
     private String email;
-    
-    private String contrato;
-    private ResponsavelEntity responsavelContrato;
 
     private Date dataNascimento;
-    private Date dataFundacao;
      
 }
