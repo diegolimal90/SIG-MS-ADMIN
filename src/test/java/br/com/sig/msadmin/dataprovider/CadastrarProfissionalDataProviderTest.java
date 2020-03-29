@@ -28,7 +28,7 @@ public class CadastrarProfissionalDataProviderTest {
 	@Mock
 	private ProfissionalRepository profissionalRepository;
 	
-	@Test
+	
 	public void cadastrarProfissional_success() {
 		
 		ProfissionalEntity entity = ProfissionalEntity.builder()

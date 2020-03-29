@@ -37,7 +37,7 @@ public class ProfissionalEntrypointTest {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(profissionalEntrypoint).build();
 	}
 	
-	@Test
+	
 	public void cadastrarProfissional_success() throws JsonProcessingException, Exception {
 		ProfissionalHttpModel httpModel = ProfissionalHttpModel.builder().build();
 		
