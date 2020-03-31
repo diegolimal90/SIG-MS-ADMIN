@@ -6,16 +6,10 @@ import br.com.sig.msadmin.core.entity.BairroEntity;
 import br.com.sig.msadmin.core.entity.CidadeEntity;
 import br.com.sig.msadmin.core.entity.EnderecoEntity;
 import br.com.sig.msadmin.core.entity.EstadoEntity;
-import br.com.sig.msadmin.core.entity.PaisEntity;
 import br.com.sig.msadmin.core.entity.ProfissionalEntity;
 import br.com.sig.msadmin.core.entity.TipoLogradouroEntity;
-import br.com.sig.msadmin.entrypoint.entity.BairroHttpModel;
-import br.com.sig.msadmin.entrypoint.entity.CidadeHttpModel;
 import br.com.sig.msadmin.entrypoint.entity.EnderecoHttpModel;
-import br.com.sig.msadmin.entrypoint.entity.EstadoHttpModel;
-import br.com.sig.msadmin.entrypoint.entity.PaisHttpModel;
 import br.com.sig.msadmin.entrypoint.entity.ProfissionalHttpModel;
-import br.com.sig.msadmin.entrypoint.entity.TipoLogradouroHttpModel;
 
 public class ProfissionalHttpModelMapper {
 
@@ -24,7 +18,6 @@ public class ProfissionalHttpModelMapper {
 				.id(e.getId())
 				.nmProfissional(e.getNmProfissional())
 				.dsMatricula(e.getDsMatricula())
-				.endereco(fromEndereco(e))
 				.dtNasc(e.getDtNasc())
 				.nrRg(e.getNrRg())
 				.nrCpf(e.getNrCpf())
@@ -32,69 +25,29 @@ public class ProfissionalHttpModelMapper {
 				.nrTelefone(e.getNrTelefone())
 				.dsEmail(e.getDsEmail())
 				.dsObs(e.getDsObs())
+				.endereco(toEndereco(e))
 		        .build())
 		        .orElse(new ProfissionalHttpModel());
 	}
 
-	private static EnderecoHttpModel fromEndereco(ProfissionalEntity entity) {
+	private static EnderecoHttpModel toEndereco(ProfissionalEntity entity) {
 		return Optional.ofNullable(entity).map(e -> EnderecoHttpModel.builder()
-				.tpLogradouro(TipoLogradouroHttpModel.builder()
-						.nmTpLogradouro(e.getEndereco()
-								.getTpLogradouro()
-								.getNmTpLogradouro())
-						.build())
-				.nrCep(e.getEndereco().getNrCep())
-				.dsComplemento(e.getEndereco().getDsComplemento())
+				.tpLogradouro(e.getEndereco().getTpLogradouro().getNmTpLogradouro())
 				.nmLogradouro(e.getEndereco().getNmLogradouro())
-				.dsNumero(e.getEndereco().getDsNumero())
-				.bairro(BairroHttpModel.builder()
-						.nmBairro(e.getEndereco()
-								.getBairro()
-								.getNmBairro())
-						.cidade(CidadeHttpModel.builder()
-								.nmCidade(e.getEndereco()
-										.getBairro()
-										.getCidade()
-										.getNmCidade())
-								.estado(EstadoHttpModel.builder()
-										.nmEstado(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getNmEstado())
-										.sgEstado(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getSgEstado())
-										.pais(PaisHttpModel.builder()
-												.nmPais(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getPais()
-												.getNmPais())
-											.build())
-										.build())
-								.build())
-						.build())
+				.dsComplemento(e.getEndereco().getDsComplemento())
+				.nrCep(e.getEndereco().getNrCep())
+				.bairro(e.getEndereco().getBairro().getNmBairro())
+				.cidade(e.getEndereco().getBairro().getCidade().getNmCidade())
+				.estado(e.getEndereco().getBairro().getCidade().getEstado().getNmEstado())
 				.build())
-		        .orElse(EnderecoHttpModel.builder()
-		        		.tpLogradouro(new TipoLogradouroHttpModel())
-		        		.bairro(BairroHttpModel.builder()
-		        				.cidade(CidadeHttpModel.builder()
-										.estado(new EstadoHttpModel())
-										.build())
-								.build())
-		        		.build());
+				.orElse(EnderecoHttpModel.builder().build());
 	}
 	
 	private static EnderecoEntity fromEndereco(ProfissionalHttpModel httpModel) {
 		return Optional.ofNullable(httpModel).map(e -> EnderecoEntity.builder()
 				.tpLogradouro(TipoLogradouroEntity.builder()
 						.nmTpLogradouro(e.getEndereco()
-								.getTpLogradouro()
-								.getNmTpLogradouro())
+								.getTpLogradouro())
 						.build())
 				.nrCep(e.getEndereco().getNrCep())
 				.dsComplemento(e.getEndereco().getDsComplemento())
@@ -102,32 +55,13 @@ public class ProfissionalHttpModelMapper {
 				.dsNumero(e.getEndereco().getDsNumero())
 				.bairro(BairroEntity.builder()
 						.nmBairro(e.getEndereco()
-								.getBairro()
-								.getNmBairro())
+								.getBairro())
 						.cidade(CidadeEntity.builder()
 								.nmCidade(e.getEndereco()
-										.getBairro()
-										.getCidade()
-										.getNmCidade())
+										.getCidade())
 								.estado(EstadoEntity.builder()
 										.nmEstado(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getNmEstado())
-										.sgEstado(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getSgEstado())
-										.pais(PaisEntity.builder()
-												.nmPais(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getPais()
-												.getNmPais())
-											.build())
+												.getEstado())
 										.build())
 								.build())
 						.build())
@@ -137,11 +71,10 @@ public class ProfissionalHttpModelMapper {
 		        		.bairro(BairroEntity.builder()
 		        				.cidade(CidadeEntity.builder()
 										.estado(EstadoEntity.builder()
-												.pais(new PaisEntity())
-												.build())
 										.build())
 								.build())
-		        		.build());
+						.build())
+        		.build());
 	}
 	
 	public static ProfissionalEntity to(ProfissionalHttpModel httpModel) {
@@ -149,7 +82,6 @@ public class ProfissionalHttpModelMapper {
 				.id(e.getId())
 				.nmProfissional(e.getNmProfissional())
 				.dsMatricula(e.getDsMatricula())
-				.endereco(fromEndereco(e))
 				.dtNasc(e.getDtNasc())
 				.nrRg(e.getNrRg())
 				.nrCpf(e.getNrCpf())
@@ -157,6 +89,7 @@ public class ProfissionalHttpModelMapper {
 				.nrTelefone(e.getNrTelefone())
 				.dsEmail(e.getDsEmail())
 				.dsObs(e.getDsObs())
+				.endereco(fromEndereco(e))
 		        .build())
 		        .orElse(new ProfissionalEntity());
 	}

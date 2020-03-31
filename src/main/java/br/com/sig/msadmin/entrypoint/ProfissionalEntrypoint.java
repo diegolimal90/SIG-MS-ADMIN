@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,10 +24,12 @@ public class ProfissionalEntrypoint {
 	@Autowired
 	private CadastrarProfissionalUseCase cadastrarProfissionalUseCase;
 	
-	@RequestMapping(value="/", method = RequestMethod.POST)
-	public ResponseEntity<PerfilEquipeHttpModel> cadastrarPerfilEquipe(@RequestBody ProfissionalHttpModel httpModel){
+	@RequestMapping(value="/{cep}", method = RequestMethod.POST)
+	public ResponseEntity<PerfilEquipeHttpModel> cadastrarPerfilEquipe(@RequestBody ProfissionalHttpModel httpModel,
+			@PathVariable String cep){
+		
 		ProfissionalEntity entity = ProfissionalHttpModelMapper.to(httpModel);
-		entity = cadastrarProfissionalUseCase.cadastrarProfissional(entity);
+		entity = cadastrarProfissionalUseCase.cadastrarProfissional(entity,cep);
 		ProfissionalHttpModel response = ProfissionalHttpModelMapper.from(entity);
 		
 		URI uri = ServletUriComponentsBuilder

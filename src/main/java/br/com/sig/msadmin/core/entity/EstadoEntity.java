@@ -18,6 +18,6 @@ public class EstadoEntity implements Serializable{
 	private String nmEstado;
 	private String sgEstado;
 
-	private PaisEntity pais;
+	// TODO remover entidades de País
 	
 }

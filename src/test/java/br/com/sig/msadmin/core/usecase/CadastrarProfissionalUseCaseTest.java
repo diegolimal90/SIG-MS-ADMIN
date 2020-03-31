@@ -33,9 +33,11 @@ public class CadastrarProfissionalUseCaseTest {
     			.nmProfissional("Fulano de Teste")
     			.build();
     	
+    	String cep = "01001000";
+    	
         Mockito.when(profissionalDataProvider.cadastrarProfissional(Mockito.any(ProfissionalEntity.class))).thenReturn(entitySaved);
         
-        ProfissionalEntity response = cadastrarProfissionalUseCase.cadastrarProfissional(entity);
+        ProfissionalEntity response = cadastrarProfissionalUseCase.cadastrarProfissional(entity,cep);
 
         Assert.assertThat(response.getId(), Matchers.comparesEqualTo(1L));
 

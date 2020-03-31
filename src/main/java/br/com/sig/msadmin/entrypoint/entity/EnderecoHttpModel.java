@@ -13,12 +13,13 @@ public class EnderecoHttpModel {
 
 	private Long id;
 	
-	private TipoLogradouroHttpModel tpLogradouro;
+	private String tpLogradouro;
 	private String nmLogradouro;
-	private String dsNumero;
-	
-	private BairroHttpModel bairro;
 	private String dsComplemento;
 	private String nrCep;	
+	private String dsNumero;
+	private String bairro;
+	private String cidade;
+	private String estado;
 	
 }

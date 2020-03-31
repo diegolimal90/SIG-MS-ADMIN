@@ -15,10 +15,8 @@ public class TipoProfissionalEntity {
 	private Long id;
 	
 	private String nmProfissao;
-	
-	private Integer nrCrm;
-	private Date dtValidadeCrm;
-	
-	private String nrCoren;
-	private Date dtValidadeCoren;
+	private Integer nrDocumento;
+	private Date dtValidadeDocumento;
+	private EspecialidadeProfissionalEntity dsEspecialidade;
+
 }

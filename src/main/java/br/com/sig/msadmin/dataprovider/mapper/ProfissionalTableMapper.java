@@ -6,14 +6,12 @@ import br.com.sig.msadmin.core.entity.BairroEntity;
 import br.com.sig.msadmin.core.entity.CidadeEntity;
 import br.com.sig.msadmin.core.entity.EnderecoEntity;
 import br.com.sig.msadmin.core.entity.EstadoEntity;
-import br.com.sig.msadmin.core.entity.PaisEntity;
 import br.com.sig.msadmin.core.entity.ProfissionalEntity;
 import br.com.sig.msadmin.core.entity.TipoLogradouroEntity;
 import br.com.sig.msadmin.dataprovider.entity.BairroTable;
 import br.com.sig.msadmin.dataprovider.entity.CidadeTable;
 import br.com.sig.msadmin.dataprovider.entity.EnderecoTable;
 import br.com.sig.msadmin.dataprovider.entity.EstadoTable;
-import br.com.sig.msadmin.dataprovider.entity.PaisTable;
 import br.com.sig.msadmin.dataprovider.entity.ProfissionalTable;
 import br.com.sig.msadmin.dataprovider.entity.TipoLogradouroTable;
 
@@ -67,14 +65,6 @@ public class ProfissionalTableMapper {
 												.getCidade()
 												.getEstado()
 												.getSgEstado())
-										.pais(PaisTable.builder()
-												.nmPais(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getPais()
-												.getNmPais())
-											.build())
 										.build())
 								.build())
 						.build())
@@ -84,11 +74,10 @@ public class ProfissionalTableMapper {
 		        		.bairro(BairroTable.builder()
 		        				.cidade(CidadeTable.builder()
 										.estado(EstadoTable.builder()
-												.pais(new PaisTable())
-												.build())
 										.build())
 								.build())
-		        		.build());
+						.build())
+        		.build());
 	}
 	
 	private static EnderecoEntity fromEndereco(ProfissionalTable table) {
@@ -122,14 +111,6 @@ public class ProfissionalTableMapper {
 												.getCidade()
 												.getEstado()
 												.getSgEstado())
-										.pais(PaisEntity.builder()
-												.nmPais(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getPais()
-												.getNmPais())
-											.build())
 										.build())
 								.build())
 						.build())
@@ -138,12 +119,11 @@ public class ProfissionalTableMapper {
 		        		.tpLogradouro(new TipoLogradouroEntity())
 		        		.bairro(BairroEntity.builder()
 		        				.cidade(CidadeEntity.builder()
-										.estado(EstadoEntity.builder()
-												.pais(new PaisEntity())
-												.build())
+										.estado(EstadoEntity.builder()	
 										.build())
 								.build())
-		        		.build());
+						.build())
+        		.build());
 	}
 	
 	public static ProfissionalEntity to(ProfissionalTable table) {

@@ -13,9 +13,7 @@ public class ProfissionalHttpModel {
 
 	private Long id;
 	private String nmProfissional;
-	private String dsMatricula;
-	
-	private EnderecoHttpModel endereco;
+	private String dsMatricula;	
 	private String dtNasc;
 	private String nrRg;
 	private String nrCpf;
@@ -23,4 +21,5 @@ public class ProfissionalHttpModel {
 	private String nrTelefone;
 	private String dsEmail;
 	private String dsObs;
+	private EnderecoHttpModel endereco;
 }
