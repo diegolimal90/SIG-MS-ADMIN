@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,10 +23,12 @@ public class ClienteEntrypoint {
 	@Autowired
 	private CadastrarClienteUseCase cadastrarClienteUseCase;
 	
-	@RequestMapping(value="/", method=RequestMethod.POST)
-	public ResponseEntity<ClienteHttpModel> cadastrarCliente(@RequestBody ClienteHttpModel httpModel){
+	@RequestMapping(value="/{cep}", method=RequestMethod.POST)
+	public ResponseEntity<ClienteHttpModel> cadastrarCliente(@RequestBody ClienteHttpModel httpModel,
+	@PathVariable String cep){
+		
 		ClienteEntity entity = ClienteHttpModelMapper.to(httpModel);
-		entity = cadastrarClienteUseCase.cadastrarCliente(entity);
+		entity = cadastrarClienteUseCase.cadastrarCliente(entity,cep);
 		ClienteHttpModel response = ClienteHttpModelMapper.from(entity);
 		
 		URI uri = ServletUriComponentsBuilder

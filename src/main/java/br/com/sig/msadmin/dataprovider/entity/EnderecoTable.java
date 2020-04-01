@@ -40,6 +40,10 @@ public class EnderecoTable {
 	private String dsComplemento;
 	private String nrCep;
 	
+	@ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="cliente_id")
+	private ClienteTable cliente;
+	
 	@OneToMany(mappedBy="endereco", cascade = CascadeType.ALL)
 	private List<ProfissionalTable> profissionais;
 	

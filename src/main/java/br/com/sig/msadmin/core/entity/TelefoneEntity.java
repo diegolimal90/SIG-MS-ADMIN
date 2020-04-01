@@ -13,6 +13,8 @@ public class TelefoneEntity{
 
     private Long id;
     
+    private ClienteEntity cliente;
+
     private String telefone;
      
 }

@@ -36,5 +36,4 @@ public class ClienteHttpModel {
     private Date dataNascimento;
     private Date dataFundacao;
 	
-		
 }

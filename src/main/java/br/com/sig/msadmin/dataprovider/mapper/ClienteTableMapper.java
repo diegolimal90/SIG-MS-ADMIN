@@ -10,7 +10,7 @@ import br.com.sig.msadmin.dataprovider.entity.ClienteTable;
 import br.com.sig.msadmin.dataprovider.entity.TelefoneTable;
 
 public class ClienteTableMapper{
-
+    //TODO Ativar Endereço e ResponsavelContrato
     public static ClienteEntity to(ClienteTable table){
         return Optional.ofNullable(table).map(e -> ClienteEntity.builder()
                 .id(e.getId())
@@ -39,7 +39,14 @@ public class ClienteTableMapper{
 
         for(TelefoneTable telefone: table.getTelefones() ){
             telefones.add(
-                TelefoneEntity.builder().id(telefone.getId()).telefone(telefone.getTelefone()).build()
+                TelefoneEntity.builder()
+                                .id(telefone.getId())
+                                .cliente(ClienteEntity.builder()
+                                            .id(table.getId())
+                                            .build()
+                                        )
+                                .telefone(telefone.getTelefone())
+                            .build()
             );
         }
         
@@ -51,7 +58,14 @@ public class ClienteTableMapper{
 
         for(TelefoneEntity telefone: entity.getTelefones() ){
             telefones.add(
-                TelefoneTable.builder().id(telefone.getId()).telefone(telefone.getTelefone()).build()
+                TelefoneTable.builder()
+                                .id(telefone.getId())
+                                .cliente(ClienteTable.builder()
+                                                        .id(entity.getId())
+                                                        .build()
+                                                        )
+                                .telefone(telefone.getTelefone())
+                            .build()
             );
         }
 

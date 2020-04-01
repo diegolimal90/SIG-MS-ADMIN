@@ -3,7 +3,6 @@ package br.com.sig.msadmin.dataprovider.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import br.com.sig.msadmin.core.entity.EnderecoEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -45,11 +45,11 @@ public class ClienteTable{
     @Column(name = "cd_cnpj")
     private String cnpj;
 
-    //TODO Alterar para List<EnderecoEntity>
-    // private String endereco;
-
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente")
+    private List<EnderecoTable> enderecos;
+    @OneToMany(mappedBy = "cliente")
     private List<TelefoneTable> telefones;
+
     @Column(name = "ds_email")
     private String email;
     
