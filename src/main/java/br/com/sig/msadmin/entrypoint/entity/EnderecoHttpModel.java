@@ -21,7 +21,7 @@ public class EnderecoHttpModel {
 	@JsonProperty("nome_logradouro")
 	private String nmLogradouro;
 	
-	@JsonProperty("comlemento")
+	@JsonProperty("complemento")
 	private String dsComplemento;
 	
 	@JsonProperty("cep")
