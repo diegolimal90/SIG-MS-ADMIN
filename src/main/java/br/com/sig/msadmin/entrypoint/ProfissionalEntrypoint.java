@@ -24,12 +24,11 @@ public class ProfissionalEntrypoint {
 	@Autowired
 	private CadastrarProfissionalUseCase cadastrarProfissionalUseCase;
 	
-	@RequestMapping(value="/{cep}", method = RequestMethod.POST)
-	public ResponseEntity<PerfilEquipeHttpModel> cadastrarPerfilEquipe(@RequestBody ProfissionalHttpModel httpModel,
-			@PathVariable String cep){
+	@RequestMapping(value="/", method = RequestMethod.POST)
+	public ResponseEntity<PerfilEquipeHttpModel> cadastrarPerfilEquipe(@RequestBody ProfissionalHttpModel httpModel){
 		
 		ProfissionalEntity entity = ProfissionalHttpModelMapper.to(httpModel);
-		entity = cadastrarProfissionalUseCase.cadastrarProfissional(entity,cep);
+		entity = cadastrarProfissionalUseCase.cadastrarProfissional(entity);
 		ProfissionalHttpModel response = ProfissionalHttpModelMapper.from(entity);
 		
 		URI uri = ServletUriComponentsBuilder

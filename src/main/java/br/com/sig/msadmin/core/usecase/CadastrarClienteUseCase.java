@@ -17,8 +17,10 @@ public class CadastrarClienteUseCase {
 	@Autowired
 	private ConsultaCepGateway consultaCepGateway;
 
-	public ClienteEntity cadastrarCliente(ClienteEntity entity, String cep){		
-		EnderecoEntity endereco = consultaCepGateway.consultaViaCep(cep);
+	public ClienteEntity cadastrarCliente(ClienteEntity entity){	
+		
+		//TODO fazer a logica para persistencia do cliente e o endereço
+//		EnderecoEntity endereco = consultaCepGateway.consultaViaCep();
 		
 		return gateway.cadastrarCliente(entity);
 	}

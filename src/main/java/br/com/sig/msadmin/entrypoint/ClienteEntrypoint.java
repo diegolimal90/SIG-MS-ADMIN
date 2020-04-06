@@ -23,12 +23,11 @@ public class ClienteEntrypoint {
 	@Autowired
 	private CadastrarClienteUseCase cadastrarClienteUseCase;
 	
-	@RequestMapping(value="/{cep}", method=RequestMethod.POST)
-	public ResponseEntity<ClienteHttpModel> cadastrarCliente(@RequestBody ClienteHttpModel httpModel,
-	@PathVariable String cep){
+	@RequestMapping(value="/", method=RequestMethod.POST)
+	public ResponseEntity<ClienteHttpModel> cadastrarCliente(@RequestBody ClienteHttpModel httpModel){
 		
 		ClienteEntity entity = ClienteHttpModelMapper.to(httpModel);
-		entity = cadastrarClienteUseCase.cadastrarCliente(entity,cep);
+		entity = cadastrarClienteUseCase.cadastrarCliente(entity);
 		ClienteHttpModel response = ClienteHttpModelMapper.from(entity);
 		
 		URI uri = ServletUriComponentsBuilder

@@ -11,6 +11,7 @@ import br.com.sig.msadmin.core.entity.TipoLogradouroEntity;
 import br.com.sig.msadmin.core.gateway.ConsultaCepGateway;
 import br.com.sig.msadmin.dataprovider.entity.EnderecoFeign;
 import br.com.sig.msadmin.dataprovider.feign.CepFeignClient;
+import br.com.sig.msadmin.exception.FeignClientException;
 
 @Component
 public class ConsultaCepDataProvider implements ConsultaCepGateway{
@@ -22,7 +23,7 @@ public class ConsultaCepDataProvider implements ConsultaCepGateway{
 	public EnderecoEntity consultaViaCep(String cep) {
 		try {
 			EnderecoFeign feign = feignClient.consultaViaCep(cep);
-			
+			//TODO criar mapper do faign para a entity
 			EnderecoEntity entity = EnderecoEntity.builder()
 					.nmLogradouro(feign.getLogradouro())
 					.nrCep(feign.getCep())
@@ -40,7 +41,7 @@ public class ConsultaCepDataProvider implements ConsultaCepGateway{
 			
 			return entity;
 		} catch(Exception ex) {
-			throw new RuntimeException("Erro ao consultar endereço por CEP");
+			throw new FeignClientException("Erro ao consultar endereço por CEP");
 		}
 	}
 

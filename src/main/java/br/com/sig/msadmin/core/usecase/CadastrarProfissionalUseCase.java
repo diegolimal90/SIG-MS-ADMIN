@@ -17,10 +17,10 @@ public class CadastrarProfissionalUseCase {
 	@Autowired
 	private ConsultaCepGateway consultaCepGateway;
 
-	public ProfissionalEntity cadastrarProfissional(ProfissionalEntity entity, String cep) {
+	public ProfissionalEntity cadastrarProfissional(ProfissionalEntity entity) {
 		
 		// TODO lógica da regra de negócio 
-		EnderecoEntity endereco = consultaCepGateway.consultaViaCep(cep);
+		EnderecoEntity endereco = consultaCepGateway.consultaViaCep(entity.getEndereco().getNrCep());
 		
 		return profissionalGateway.cadastrarProfissional(entity);
 	}
