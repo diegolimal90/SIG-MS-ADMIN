@@ -22,7 +22,7 @@ public class CadastrarProfissionalUseCaseTest {
 	private ProfissionalDataProvider profissionalDataProvider;
     
     @Test
-    public void CadastrarPerfilEquipeUseCase_success(){
+    public void CadastrarProfissionalUseCase_success(){
     	
     	ProfissionalEntity entity = ProfissionalEntity.builder()
     			.nmProfissional("Fulano de Teste")
@@ -33,13 +33,11 @@ public class CadastrarProfissionalUseCaseTest {
     			.nmProfissional("Fulano de Teste")
     			.build();
     	
-    	String cep = "01001000";
-    	
         Mockito.when(profissionalDataProvider.cadastrarProfissional(Mockito.any(ProfissionalEntity.class))).thenReturn(entitySaved);
         
-        ProfissionalEntity response = cadastrarProfissionalUseCase.cadastrarProfissional(entity,cep);
+        ProfissionalEntity response = cadastrarProfissionalUseCase.cadastrarProfissional(entity);
 
-        Assert.assertThat(response.getId(), Matchers.comparesEqualTo(1L));
+        Assert.assertThat(response.getId(), Matchers.notNullValue());
 
     }
 

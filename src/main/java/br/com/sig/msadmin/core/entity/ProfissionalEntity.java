@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.core.entity;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,15 +15,15 @@ public class ProfissionalEntity {
 	
 	private Long id;
 	private String nmProfissional;
-	private String dsMatricula;
-	
-	private EnderecoEntity endereco;
-	private String dtNasc;
-	private String nrRg;
-	private String nrCpf;
+	private String dsMatricula;	
+	private LocalDate dtNasc;
+	private Integer nrRg;
+	private Integer nrCpf;
 	private String tpSanguineo;
 	private String nrTelefone;
 	private String dsEmail;
 	private String dsObs;
 	
+	private TipoProfissionalEntity tpProfissional;
+	private EnderecoEntity endereco;
 }

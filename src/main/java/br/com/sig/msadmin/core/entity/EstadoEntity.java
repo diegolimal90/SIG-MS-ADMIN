@@ -17,7 +17,4 @@ public class EstadoEntity implements Serializable{
 	private Long id;
 	private String nmEstado;
 	private String sgEstado;
-
-	// TODO remover entidades de País
-	
 }

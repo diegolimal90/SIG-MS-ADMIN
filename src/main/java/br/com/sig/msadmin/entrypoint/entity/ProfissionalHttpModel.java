@@ -1,5 +1,7 @@
 package br.com.sig.msadmin.entrypoint.entity;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -20,19 +22,21 @@ public class ProfissionalHttpModel {
 	@JsonProperty("matricula")
 	private String dsMatricula;
 	@JsonProperty("data_nascimento")
-	private String dtNasc;
+	private LocalDate dtNasc;
 	@JsonProperty("rg_profissional")
-	private String nrRg;
+	private Integer nrRg;
 	@JsonProperty("cpf_profissional")
-	private String nrCpf;
+	private Integer nrCpf;
 	@JsonProperty("tipo_sanguineo")
 	private String tpSanguineo;
-	@JsonProperty("telefone")
+	@JsonProperty("telefone_profissional")
 	private String nrTelefone;
-	@JsonProperty("email")
+	@JsonProperty("email_profissional")
 	private String dsEmail;
-	@JsonProperty("observacao")
+	@JsonProperty("observacao_profissioal")
 	private String dsObs;
 	
+	@JsonProperty("tipo_profissional")
+	private TipoProfissionalHttpModel tpProfissional;
 	private EnderecoHttpModel endereco;
 }

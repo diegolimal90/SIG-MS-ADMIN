@@ -1,6 +1,6 @@
 package br.com.sig.msadmin.core.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,8 +15,11 @@ public class TipoProfissionalEntity {
 	private Long id;
 	
 	private String nmProfissao;
-	private Integer nrDocumento;
-	private Date dtValidadeDocumento;
+	private String nrDocumento;
+	private LocalDate dtValidadeDocumento;
+	private String dsCategoriaCnh;
+	private String dsCursoObrigatorio;
+	private LocalDate dtValidadeCurso;
 	private EspecialidadeProfissionalEntity dsEspecialidade;
 
 }

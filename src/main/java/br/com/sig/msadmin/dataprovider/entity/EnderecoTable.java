@@ -40,7 +40,7 @@ public class EnderecoTable {
 	private String dsComplemento;
 	private String nrCep;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="cliente_id")
 	private ClienteTable cliente;
 	

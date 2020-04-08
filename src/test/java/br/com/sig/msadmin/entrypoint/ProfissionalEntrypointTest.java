@@ -3,6 +3,7 @@ package br.com.sig.msadmin.entrypoint;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -36,19 +37,17 @@ public class ProfissionalEntrypointTest {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(profissionalEntrypoint).build();
 	}
 	
-	
+	@Test
 	public void cadastrarProfissional_success() throws JsonProcessingException, Exception {
 		ProfissionalHttpModel httpModel = ProfissionalHttpModel.builder().build();
 		
 		ProfissionalEntity entity = ProfissionalEntity.builder().build();
 		
-		Mockito.when(cadastrarProfissionalUseCase.cadastrarProfissional(Mockito.any(ProfissionalEntity.class),
-				Mockito.anyString()))
-			.thenReturn(entity);
+		Mockito.when(cadastrarProfissionalUseCase.cadastrarProfissional(Mockito.any(ProfissionalEntity.class))).thenReturn(entity);
 		
 		this.mockMvc.perform(
 				MockMvcRequestBuilders
-				.post("/profissional/")
+				.post("/profissionais/")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content( new ObjectMapper().writeValueAsString(httpModel) )
 				).andExpect(status().isCreated());
