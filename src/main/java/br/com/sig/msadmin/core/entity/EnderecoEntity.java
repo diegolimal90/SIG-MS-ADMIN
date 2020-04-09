@@ -19,6 +19,6 @@ public class EnderecoEntity {
 	
 	private BairroEntity bairro;
 	private String dsComplemento;
-	private Integer nrCep;	
+	private String nrCep;	
 	
 }

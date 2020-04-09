@@ -1,9 +1,14 @@
 package br.com.sig.msadmin.dataprovider.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,4 +27,8 @@ public class EspecialidadeProfissionalTable {
 	private Long id;
 	
 	private String nomeEspecialidade;
+	
+	@JsonBackReference
+	@OneToMany(mappedBy="especialidade")
+	private List<TipoProfissionalTable> tipoProfissionais;
 }

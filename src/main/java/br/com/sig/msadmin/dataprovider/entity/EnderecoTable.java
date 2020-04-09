@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,23 +30,25 @@ public class EnderecoTable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="tp_logradouro_id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="id_tp_logradouro")
 	private TipoLogradouroTable tpLogradouro;
 	private String nmLogradouro;
 	private String dsNumero;
 	
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="bairro_id")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="id_bairro")
 	private BairroTable bairro;
 	private String dsComplemento;
 	private String nrCep;
 	
+	//TODO Matheus -> verificar se a ligação está correta
 	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="cliente_id")
 	private ClienteTable cliente;
 	
-	@OneToMany(mappedBy="endereco", cascade = CascadeType.ALL)
+	@JsonBackReference
+	@OneToMany(mappedBy="endereco")
 	private List<ProfissionalTable> profissionais;
 	
 //	@JsonBackReference

@@ -20,6 +20,7 @@ public class CadastrarProfissionalUseCase {
 	public ProfissionalEntity cadastrarProfissional(ProfissionalEntity entity) {
 		
 		// TODO lógica da regra de negócio 
+		@SuppressWarnings("unused")
 		EnderecoEntity endereco = consultaCepGateway.consultaViaCep(entity.getEndereco().getNrCep());
 		
 		return profissionalGateway.cadastrarProfissional(entity);

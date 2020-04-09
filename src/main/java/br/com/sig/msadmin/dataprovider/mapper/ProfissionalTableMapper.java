@@ -2,143 +2,44 @@ package br.com.sig.msadmin.dataprovider.mapper;
 
 import java.util.Optional;
 
-import br.com.sig.msadmin.core.entity.BairroEntity;
-import br.com.sig.msadmin.core.entity.CidadeEntity;
-import br.com.sig.msadmin.core.entity.EnderecoEntity;
-import br.com.sig.msadmin.core.entity.EstadoEntity;
 import br.com.sig.msadmin.core.entity.ProfissionalEntity;
-import br.com.sig.msadmin.core.entity.TipoLogradouroEntity;
-import br.com.sig.msadmin.dataprovider.entity.BairroTable;
-import br.com.sig.msadmin.dataprovider.entity.CidadeTable;
-import br.com.sig.msadmin.dataprovider.entity.EnderecoTable;
-import br.com.sig.msadmin.dataprovider.entity.EstadoTable;
 import br.com.sig.msadmin.dataprovider.entity.ProfissionalTable;
-import br.com.sig.msadmin.dataprovider.entity.TipoLogradouroTable;
 
 public class ProfissionalTableMapper {
 
 	public static ProfissionalTable from(ProfissionalEntity entity) {
-		return Optional.ofNullable(entity).map(e -> ProfissionalTable.builder()
-				.id(e.getId())
-				.nmProfissional(e.getNmProfissional())
-				.dsMatricula(e.getDsMatricula())
-				.endereco(fromEndereco(e))
-				.dtNasc(e.getDtNasc())
-				.nrRg(e.getNrRg())
-				.nrCpf(e.getNrCpf())
-				.tpSanguineo(e.getTpSanguineo())
-				.nrTelefone(e.getNrTelefone())
-				.dsEmail(e.getDsEmail())
-				.dsObs(e.getDsObs())
+		return Optional.ofNullable(entity).map(profissional -> ProfissionalTable.builder()
+				.id(profissional.getId())
+				.nmProfissional(profissional.getNmProfissional())
+				.dsMatricula(profissional.getDsMatricula())
+				.endereco(EnderecoTableMapper.to(profissional.getEndereco()))
+				.tpProfissional(TipoProfissionalTableMapper.to(profissional.getTpProfissional()))
+				.dtNasc(profissional.getDtNasc())
+				.nrRg(profissional.getNrRg())
+				.nrCpf(profissional.getNrCpf())
+				.tpSanguineo(profissional.getTpSanguineo())
+				.nrTelefone(profissional.getNrTelefone())
+				.dsEmail(profissional.getDsEmail())
+				.dsObs(profissional.getDsObs())
 		        .build())
 		        .orElse(new ProfissionalTable());
 	}
 
-	private static EnderecoTable fromEndereco(ProfissionalEntity entity) {
-		return Optional.ofNullable(entity).map(e -> EnderecoTable.builder()
-				.tpLogradouro(TipoLogradouroTable.builder()
-						.nmTpLogradouro(e.getEndereco()
-								.getTpLogradouro()
-								.getNmTpLogradouro())
-						.build())
-				.nrCep(e.getEndereco().getNrCep())
-				.dsComplemento(e.getEndereco().getDsComplemento())
-				.nmLogradouro(e.getEndereco().getNmLogradouro())
-				.dsNumero(e.getEndereco().getDsNumero())
-				.bairro(BairroTable.builder()
-						.nmBairro(e.getEndereco()
-								.getBairro()
-								.getNmBairro())
-						.cidade(CidadeTable.builder()
-								.nmCidade(e.getEndereco()
-										.getBairro()
-										.getCidade()
-										.getNmCidade())
-								.estado(EstadoTable.builder()
-										.nmEstado(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getNmEstado())
-										.sgEstado(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getSgEstado())
-										.build())
-								.build())
-						.build())
-				.build())
-		        .orElse(EnderecoTable.builder()
-		        		.tpLogradouro(new TipoLogradouroTable())
-		        		.bairro(BairroTable.builder()
-		        				.cidade(CidadeTable.builder()
-										.estado(EstadoTable.builder()
-										.build())
-								.build())
-						.build())
-        		.build());
-	}
-	
-	private static EnderecoEntity fromEndereco(ProfissionalTable table) {
-		return Optional.ofNullable(table).map(e -> EnderecoEntity.builder()
-				.tpLogradouro(TipoLogradouroEntity.builder()
-						.nmTpLogradouro(e.getEndereco()
-								.getTpLogradouro()
-								.getNmTpLogradouro())
-						.build())
-				.nrCep(e.getEndereco().getNrCep())
-				.dsComplemento(e.getEndereco().getDsComplemento())
-				.nmLogradouro(e.getEndereco().getNmLogradouro())
-				.dsNumero(e.getEndereco().getDsNumero())
-				.bairro(BairroEntity.builder()
-						.nmBairro(e.getEndereco()
-								.getBairro()
-								.getNmBairro())
-						.cidade(CidadeEntity.builder()
-								.nmCidade(e.getEndereco()
-										.getBairro()
-										.getCidade()
-										.getNmCidade())
-								.estado(EstadoEntity.builder()
-										.nmEstado(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getNmEstado())
-										.sgEstado(e.getEndereco()
-												.getBairro()
-												.getCidade()
-												.getEstado()
-												.getSgEstado())
-										.build())
-								.build())
-						.build())
-				.build())
-		        .orElse(EnderecoEntity.builder()
-		        		.tpLogradouro(new TipoLogradouroEntity())
-		        		.bairro(BairroEntity.builder()
-		        				.cidade(CidadeEntity.builder()
-										.estado(EstadoEntity.builder()	
-										.build())
-								.build())
-						.build())
-        		.build());
-	}
 	
 	public static ProfissionalEntity to(ProfissionalTable table) {
-		return Optional.ofNullable(table).map(e -> ProfissionalEntity.builder()
-				.id(e.getId())
-				.nmProfissional(e.getNmProfissional())
-				.dsMatricula(e.getDsMatricula())
-				.endereco(fromEndereco(e))
-				.dtNasc(e.getDtNasc())
-				.nrRg(e.getNrRg())
-				.nrCpf(e.getNrCpf())
-				.tpSanguineo(e.getTpSanguineo())
-				.nrTelefone(e.getNrTelefone())
-				.dsEmail(e.getDsEmail())
-				.dsObs(e.getDsObs())
+		return Optional.ofNullable(table).map(profissional -> ProfissionalEntity.builder()
+				.id(profissional.getId())
+				.nmProfissional(profissional.getNmProfissional())
+				.dsMatricula(profissional.getDsMatricula())
+				.endereco(EnderecoTableMapper.from(profissional.getEndereco()))
+				.tpProfissional(TipoProfissionalTableMapper.from(profissional.getTpProfissional()))
+				.dtNasc(profissional.getDtNasc())
+				.nrRg(profissional.getNrRg())
+				.nrCpf(profissional.getNrCpf())
+				.tpSanguineo(profissional.getTpSanguineo())
+				.nrTelefone(profissional.getNrTelefone())
+				.dsEmail(profissional.getDsEmail())
+				.dsObs(profissional.getDsObs())
 		        .build())
 		        .orElse(new ProfissionalEntity());
 	}

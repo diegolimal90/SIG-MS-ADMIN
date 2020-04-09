@@ -2,6 +2,7 @@ package br.com.sig.msadmin.entrypoint.entity;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
@@ -19,9 +20,10 @@ public class ProfissionalHttpModel {
 	
 	@JsonProperty("nome_profissional")
 	private String nmProfissional;
-	@JsonProperty("matricula")
+	@JsonProperty("matricula_profissional")
 	private String dsMatricula;
 	@JsonProperty("data_nascimento")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dtNasc;
 	@JsonProperty("rg_profissional")
 	private Integer nrRg;
@@ -33,7 +35,7 @@ public class ProfissionalHttpModel {
 	private String nrTelefone;
 	@JsonProperty("email_profissional")
 	private String dsEmail;
-	@JsonProperty("observacao_profissioal")
+	@JsonProperty("observacao_profissional")
 	private String dsObs;
 	
 	@JsonProperty("tipo_profissional")

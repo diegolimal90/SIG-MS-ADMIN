@@ -22,7 +22,7 @@ public class EnderecoHttpModel {
 	@JsonProperty("complemento")
 	private String dsComplemento;
 	@JsonProperty("cep")
-	private Integer nrCep;
+	private String nrCep;
 	@JsonProperty("numero")
 	private String dsNumero;
 	private String bairro;
