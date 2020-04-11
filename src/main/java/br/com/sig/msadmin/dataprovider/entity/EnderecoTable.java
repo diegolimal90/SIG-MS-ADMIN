@@ -2,7 +2,6 @@ package br.com.sig.msadmin.dataprovider.entity;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -42,10 +41,15 @@ public class EnderecoTable {
 	private String dsComplemento;
 	private String nrCep;
 	
-	//TODO Matheus -> verificar se a ligação está correta
-	@ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="cliente_id")
+	@JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
 	private ClienteTable cliente;
+
+	@JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "responsavel_id")
+	private ResponsavelTable responsavel;
 	
 	@JsonBackReference
 	@OneToMany(mappedBy="endereco")

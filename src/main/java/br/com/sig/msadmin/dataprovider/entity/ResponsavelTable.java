@@ -3,15 +3,11 @@ package br.com.sig.msadmin.dataprovider.entity;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -42,10 +38,12 @@ public class ResponsavelTable{
     @Column(name = "cd_rg")
     private String rg;
 
-    //TODO Alterar para List<EnderecoEntity>
-    // private List<EnderecoTable> endereco;
-    @OneToMany(mappedBy = "responsavel", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "responsavel")
+    private List<EnderecoTable> enderecos;
+    
+    @OneToMany(mappedBy = "responsavel")
     private List<TelefoneTable> telefones;
+    
     @Column(name = "ds_email")
     private String email;
 

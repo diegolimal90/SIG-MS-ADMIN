@@ -1,6 +1,6 @@
 package br.com.sig.msadmin.dataprovider.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,9 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
-import br.com.sig.msadmin.core.entity.EnderecoEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -55,12 +53,13 @@ public class ClienteTable{
     
     @Column(name = "ds_contrato")
     private String contrato;
+    
     // @OneToOne(mappedBy = "cliente")
     // private ResponsavelTable responsavelContrato;
 
     @Column(name = "dt_nascimento")
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
     @Column(name = "dt_fundacao")
-    private Date dataFundacao;
+    private LocalDate dataFundacao;
 
 }

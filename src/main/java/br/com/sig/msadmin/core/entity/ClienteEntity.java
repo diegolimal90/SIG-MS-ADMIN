@@ -1,6 +1,6 @@
 package br.com.sig.msadmin.core.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -32,7 +32,7 @@ public class ClienteEntity{
     private String contrato;
     private ResponsavelEntity responsavelContrato;
 
-    private Date dataNascimento;
-    private Date dataFundacao;
+    private LocalDate dataNascimento;
+    private LocalDate dataFundacao;
      
 }

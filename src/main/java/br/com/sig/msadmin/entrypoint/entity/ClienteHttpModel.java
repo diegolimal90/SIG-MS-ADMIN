@@ -1,7 +1,11 @@
 package br.com.sig.msadmin.entrypoint.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,10 +19,17 @@ import lombok.NoArgsConstructor;
 public class ClienteHttpModel {
 
     private Long id;
+
+    @JsonProperty("tipo_cliente")
     private Integer tipoCliente;
 
+    @JsonAlias({"nome_cliente"})
     private String nome;
+
+    @JsonProperty("nome_social")
     private String nomeSocial;
+
+    @JsonProperty("nome_fantasia")
     private String nomeFantasia;
 
     private String rg;
@@ -33,7 +44,12 @@ public class ClienteHttpModel {
     //TODO finalizar ResponsavelHttpModel
     //private ResponsavelEntity responsavelContrato;
 
-    private Date dataNascimento;
-    private Date dataFundacao;
+    @JsonProperty("data_nascimento")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate dataNascimento;
+
+    @JsonProperty("data_fundacao")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate dataFundacao;
 	
 }
