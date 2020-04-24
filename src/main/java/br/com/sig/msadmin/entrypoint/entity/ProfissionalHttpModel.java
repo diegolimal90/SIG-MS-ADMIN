@@ -26,9 +26,9 @@ public class ProfissionalHttpModel {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private LocalDate dtNasc;
 	@JsonProperty("rg_profissional")
-	private Integer nrRg;
+	private String nrRg;
 	@JsonProperty("cpf_profissional")
-	private Integer nrCpf;
+	private String nrCpf;
 	@JsonProperty("tipo_sanguineo")
 	private String tpSanguineo;
 	@JsonProperty("telefone_profissional")

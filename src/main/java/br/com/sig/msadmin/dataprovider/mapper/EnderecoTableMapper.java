@@ -17,6 +17,7 @@ public class EnderecoTableMapper {
 
 	public static EnderecoTable to(EnderecoEntity entity) {
 		return Optional.ofNullable(entity).map(endereco -> EnderecoTable.builder()
+				.id(endereco.getId())
 				.tpLogradouro(TipoLogradouroTable.builder()
 						.nmTpLogradouro(endereco
 								.getTpLogradouro()
@@ -60,6 +61,7 @@ public class EnderecoTableMapper {
 	
 	public static EnderecoEntity from(EnderecoTable table) {
 		return Optional.ofNullable(table).map(endereco -> EnderecoEntity.builder()
+				.id(endereco.getId())
 				.tpLogradouro(TipoLogradouroEntity.builder()
 						.nmTpLogradouro(endereco.getTpLogradouro()
 								.getNmTpLogradouro())

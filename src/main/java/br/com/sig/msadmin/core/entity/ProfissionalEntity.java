@@ -17,8 +17,8 @@ public class ProfissionalEntity {
 	private String nmProfissional;
 	private String dsMatricula;	
 	private LocalDate dtNasc;
-	private Integer nrRg;
-	private Integer nrCpf;
+	private String nrRg;
+	private String nrCpf;
 	private String tpSanguineo;
 	private String nrTelefone;
 	private String dsEmail;
