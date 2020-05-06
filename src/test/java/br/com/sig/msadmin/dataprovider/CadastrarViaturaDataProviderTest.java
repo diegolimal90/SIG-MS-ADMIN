@@ -27,18 +27,23 @@ public class CadastrarViaturaDataProviderTest {
     private Date date = new Date();
 
     private ViaturaEntity viatura = ViaturaEntity.builder()
-                                                .id(1L)
-                                                .ano(2010)
-                                                .placa("API-7777")
-                                                .fabricante("Ford")
-                                                .quilometragem_atual(2000)
-                                                .quilometragem_inicial(1000)
-                                                .dataCadastro(date)
-                                                .dataAlteracao(date)
-                                                .dataDesativacao(date)
-                                                .idCadastro(2L)
-                                                .idAlteracao(3L)
-                                                .idDesativacao(2L)
+    										.id_viatura(1L)
+    										.ano_viatura(2010)
+    										.cd_placa_viatura("API-7777")
+    										.ds_fabricante("Ford")
+    										.nr_km_inicial(2000)
+    										.nr_km_final(2000)
+    										.dt_cadastro_viatura(date)
+        	
+    									//	.dataAlteracao(date)
+    									//	.dataDesativacao(date)
+        	
+    									//	.idCadastro(2L)
+    									//	.idAlteracao(3L)
+    									//	.idDesativacao(4L)
+                                       
+                                                
+                                                
                                                 .build();
 
     @Test

@@ -25,27 +25,28 @@ public class CadastrarViaturaUseCaseTest {
     private ViaturaDataProvider dataProvider;
     
     private ViaturaEntity viatura = ViaturaEntity.builder()
-                                                 .ano(2010)
-                                                 .placa("API-7777")
-                                                 .fabricante("Ford")
-                                                 .quilometragem_atual(2000)
-                                                 .quilometragem_inicial(1000)
+    		                                     .ano_viatura(2010)
+    		                                     .cd_placa_viatura("API-7777")
+    		                                     .ds_fabricante("Ford")
+    		                                     .nr_km_inicial(2000)
+    		                                     .nr_km_final(2000)
+    		                                        		                                
                                                  .build();
 
     private ViaturaEntity cloneViatura = ViaturaEntity.builder()
-                                                      .ano(2010)
-                                                      .placa("API-7777")
-                                                      .fabricante("Ford")
-                                                      .quilometragem_atual(2000)
-                                                      .quilometragem_inicial(1000)
-                                                      .build();
+    												.ano_viatura(2010)
+    												.cd_placa_viatura("API-7777")
+    												.ds_fabricante("Ford")
+    												.nr_km_inicial(2000)
+    												.nr_km_final(2000)
+                                                    .build();
     
     @Test
     public void CadastrarViaturaUseCase_success(){
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-        cloneViatura.setDataCadastro(timestamp);
-        viatura.setDataCadastro(timestamp);
+        cloneViatura.setDt_cadastro_viatura(timestamp);
+        viatura.setDt_cadastro_viatura(timestamp);
 
         Mockito.when(dataProvider.salvarViatura(Mockito.any(ViaturaEntity.class))).thenReturn(cloneViatura);
 

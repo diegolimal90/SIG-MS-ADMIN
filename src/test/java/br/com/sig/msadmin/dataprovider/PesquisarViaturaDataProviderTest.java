@@ -31,18 +31,23 @@ public class PesquisarViaturaDataProviderTest {
     @Test
     public void pesquisarViatura_success(){
         ViaturaTable viatura = ViaturaTable.builder()
+        		
+        	
+        		
+        		
+        		
                                             .id(1L)
                                             .ano(2010)
                                             .placa("API-7777")
                                             .fabricante("Ford")
-                                            .quilometragem_atual(2000)
-                                            .quilometragem_inicial(1000)
+                                            .quilometragemInicial(2000)
+                                            .quilometragemFinal(2000)
                                             .dataCadastro(date)
                                             .dataAlteracao(date)
-                                            .dataDesativacao(date)
-                                            .idCadastro(2L)
+                                          /*  .dataDesativacao(date)
+                                           .idCadastro(2L)
                                             .idAlteracao(3L)
-                                            .idDesativacao(2L)
+                                            .idDesativacao(2L)*/
                                             .build();
 
         List<ViaturaTable> listViatura = new ArrayList<>();
@@ -58,18 +63,18 @@ public class PesquisarViaturaDataProviderTest {
     @Test(expected = DataBaseException.class)
     public void pesquisarViatura_exception(){
         ViaturaTable viatura = ViaturaTable.builder()
-                                            .id(1L)
-                                            .ano(2010)
-                                            .placa("API-7777")
-                                            .fabricante("Ford")
-                                            .quilometragem_atual(2000)
-                                            .quilometragem_inicial(1000)
-                                            .dataCadastro(date)
-                                            .dataAlteracao(date)
-                                            .dataDesativacao(date)
-                                            .idCadastro(2L)
-                                            .idAlteracao(3L)
-                                            .idDesativacao(2L)
+        		.id(1L)
+                .ano(2010)
+                .placa("API-7777")
+                .fabricante("Ford")
+                .quilometragemInicial(2000)
+                .quilometragemFinal(2000)
+                .dataCadastro(date)
+                .dataAlteracao(date)
+              /*  .dataDesativacao(date)
+                .idCadastro(2L)
+                .idAlteracao(3L)
+                .idDesativacao(2L)*/
                                             .build();
 
         List<ViaturaTable> listViatura = new ArrayList<>();

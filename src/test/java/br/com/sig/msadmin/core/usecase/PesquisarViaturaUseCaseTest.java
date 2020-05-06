@@ -27,12 +27,12 @@ public class PesquisarViaturaUseCaseTest {
     public void PesquisarViaturaUseCase_success(){
     	ViaturaEntity entity = new ViaturaEntity();
     	
-    	entity.setId(1L);
-    	entity.setAno(2010);
-    	entity.setPlaca("API-0007");
-    	entity.setFabricante("Jascker");
-    	entity.setQuilometragem_atual(12000);
-    	entity.setQuilometragem_inicial(10000);
+    	entity.setId_viatura(1L);
+    	entity.setAno_viatura(2010);
+    	entity.setCd_placa_viatura("API-0007");
+    	entity.setDs_fabricante("Jascker");
+    	entity.setNr_km_inicial(12000);
+    	entity.setNr_km_final(10000);
     	
     	List<ViaturaEntity> list = new ArrayList<>();
     	list.add(entity);

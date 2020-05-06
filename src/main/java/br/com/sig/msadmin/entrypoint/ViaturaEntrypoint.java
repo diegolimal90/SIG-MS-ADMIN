@@ -36,7 +36,7 @@ public class ViaturaEntrypoint{
         URI uri = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}")
-				.buildAndExpand(response.getId())
+				.buildAndExpand(response.getId_viatura())
 				.toUri();
 		
 		return ResponseEntity.created(uri).build();
@@ -47,9 +47,9 @@ public class ViaturaEntrypoint{
         List<ViaturaEntity> listEntity = pesquisarViaturaUseCase.pesquisarViatura();
         List<ViaturaHttpModel> listResponse = new ArrayList<>();
 
-        for(ViaturaEntity entity: listEntity){
-            listResponse.add(ViaturaHttpModelMapper.from(entity));
-        }
+        //for(ViaturaEntity entity: listEntity){
+        //    listResponse.add(ViaturaHttpModelMapper.from(entity));
+    //    }
 
         return ResponseEntity.ok().body(listResponse);
     }

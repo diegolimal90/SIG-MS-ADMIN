@@ -17,7 +17,8 @@ public class CadastrarViaturaUseCase {
 	private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 	
 	public ViaturaEntity cadastrarViatura(ViaturaEntity entity){
-		entity.setDataCadastro(timestamp);
+	
+		entity.setDt_cadastro_viatura(timestamp);
 		
 		return gateway.salvarViatura(entity);
 	}

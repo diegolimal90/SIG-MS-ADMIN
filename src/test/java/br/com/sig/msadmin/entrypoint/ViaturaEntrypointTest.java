@@ -41,20 +41,20 @@ public class ViaturaEntrypointTest {
     private PesquisarViaturaUseCase PesquisarViaturaUseCase;
 
     private ViaturaEntity viatura = ViaturaEntity.builder()
-                                                 .ano(2010)
-                                                 .placa("API-7777")
-                                                 .fabricante("Ford")
-                                                 .quilometragem_atual(2000)
-                                                 .quilometragem_inicial(1000)
+    											 .ano_viatura(2010)
+    											 .cd_placa_viatura("API-7777")
+    											 .ds_fabricante("Ford")
+    											 .nr_km_inicial(2000)
+    											 .nr_km_final(2000)
                                                  .build();
 
     private ViaturaHttpModel httpModel = ViaturaHttpModel.builder()
-                                                         .ano(2010)
-                                                         .placa("API-7777")
-                                                         .fabricante("Ford")
-                                                         .quilometragem_atual(2000)
-                                                         .quilometragem_inicial(1000)
-                                                         .build();
+    											 .ano_viatura(2010)
+    											 .cd_placa_viatura("API-7777")
+    											 .ds_fabricante("Ford")
+    											 .nr_km_inicial(2000)
+    											 .nr_km_final(2000)
+                                                 .build();
 	
 	@Before
 	public void setUp() {
