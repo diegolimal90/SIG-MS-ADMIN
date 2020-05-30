@@ -1,15 +1,17 @@
 package br.com.sig.msadmin.core.usecase;
 
-import java.time.LocalDate;
-import java.time.Period;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.sig.msadmin.core.entity.ClienteEntity;
 import br.com.sig.msadmin.core.entity.EnderecoEntity;
+import br.com.sig.msadmin.core.entity.TelefoneEntity;
 import br.com.sig.msadmin.core.gateway.ClienteGateway;
 import br.com.sig.msadmin.core.gateway.ConsultaCepGateway;
+import br.com.sig.msadmin.core.gateway.TelefoneGateway;
 import br.com.sig.msadmin.core.utils.CpfCnpjUtils;
 import br.com.sig.msadmin.core.utils.EmailUtils;
 import br.com.sig.msadmin.core.utils.IdadeUtils;
@@ -20,8 +22,11 @@ import br.com.sig.msadmin.exception.DataBaseException;
 @Component
 public class CadastrarClienteUseCase {
 
-   @Autowired
+    @Autowired
 	private ClienteGateway gateway;
+
+	@Autowired
+	private TelefoneGateway telefoneGateway;
 
 	@Autowired
 	private ConsultaCepGateway consultaCepGateway;
@@ -40,14 +45,15 @@ public class CadastrarClienteUseCase {
 		validarTelefone(entity);
 		validarContrato(entity);
 		validarEndereco(entity);
-		
-		return gateway.cadastrarCliente(entity);
+
+		entity = gateway.cadastrarCliente(entity);
+		this.cadastrarTelefones(entity);
+
+		return entity;
 	}
 
-	private static void validarIdade(ClienteEntity entity){
-		LocalDate hoje = LocalDate.now();
-		
-		if( !( IdadeUtils.calcularIdade(entity.getDataNascimento(), hoje) >= 18 ) ){
+	private static void validarIdade(ClienteEntity entity){		
+		if( IdadeUtils.isMaior( entity.getDataNascimento() ) ){
 			throw new DataBaseException("O cliente não é maior de idade...");
 		}
 	}
@@ -74,6 +80,20 @@ public class CadastrarClienteUseCase {
 				throw new DataBaseException("Telefone está inválido...");
 			}
 		});
+	}
+
+	private void cadastrarTelefones(ClienteEntity entity){
+		List<TelefoneEntity> listaTelefone = new ArrayList<>();
+		
+		entity.getTelefones().forEach(numero -> {
+			TelefoneEntity novoTelefone = new TelefoneEntity();
+
+			novoTelefone = telefoneGateway.cadastrarTelefone(numero);
+
+			listaTelefone.add(novoTelefone);
+		});
+
+		entity.setTelefones(listaTelefone);
 	}
 
 	private static void validarRg(ClienteEntity entity){

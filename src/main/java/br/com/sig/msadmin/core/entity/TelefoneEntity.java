@@ -15,4 +15,5 @@ public class TelefoneEntity{
 
     private String telefone;
      
+    private ClienteEntity cliente;
 }
