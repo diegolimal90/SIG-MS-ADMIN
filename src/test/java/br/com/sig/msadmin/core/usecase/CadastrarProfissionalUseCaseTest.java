@@ -21,6 +21,8 @@ public class CadastrarProfissionalUseCaseTest {
 	@Mock
 	private ProfissionalDataProvider profissionalDataProvider;
     
+	//FIXME Corrigir teste com as novas regras de negócio
+	
     @Test
     public void CadastrarProfissionalUseCase_success(){
     	

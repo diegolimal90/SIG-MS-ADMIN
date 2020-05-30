@@ -16,5 +16,5 @@ public class EnderecoFeign {
 	private String logradouro;
 	private String bairro;
 	private String localidade;
-	
+	private String uf;
 }

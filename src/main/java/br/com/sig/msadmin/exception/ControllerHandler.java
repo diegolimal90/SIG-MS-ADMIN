@@ -14,12 +14,12 @@ public class ControllerHandler {
 
 	@ExceptionHandler(DataBaseException.class)
 	public ResponseEntity<StandardError> internalServerErrorDb(DataBaseException e, HttpServletRequest request) {
-		StandardError err = new StandardError(HttpStatus.NOT_FOUND.value(), e.getMessage(), System.currentTimeMillis());
+		StandardError err = new StandardError(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), System.currentTimeMillis());
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err);
 	}
 	@ExceptionHandler(FeignClientException.class)
 	public ResponseEntity<StandardError> internalServerErrorFc(DataBaseException e, HttpServletRequest request) {
-		StandardError err = new StandardError(HttpStatus.NOT_FOUND.value(), e.getMessage(), System.currentTimeMillis());
+		StandardError err = new StandardError(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage(), System.currentTimeMillis());
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err);
 	}
 }

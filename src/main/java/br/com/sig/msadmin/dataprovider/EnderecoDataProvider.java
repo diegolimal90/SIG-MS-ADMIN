@@ -1,5 +1,8 @@
 package br.com.sig.msadmin.dataprovider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -53,8 +56,25 @@ public class EnderecoDataProvider implements EnderecoGateway{
 			return entity;
 		} catch (Exception e) {
 			throw new DataBaseException("Falha na persistência do endereço");
-		}						
-			
+		}								
 	}
+	
+	@Override
+	public List<EnderecoEntity> buscarEndereco(String cep){
+        try{
+            List<EnderecoEntity> listaEntity = new ArrayList<>();
+            List<EnderecoTable> listaTable = new ArrayList<>();
+
+            listaTable = enderecoRepository.findByNrCep(cep);
+
+            for(EnderecoTable endereco : listaTable){
+                listaEntity.add(EnderecoTableMapper.from(endereco));
+            }
+
+            return listaEntity;
+        }catch(Exception e){
+            throw new DataBaseException("[E03] Falha ao buscar o endereço!");
+        }
+    }
 
 }

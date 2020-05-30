@@ -20,6 +20,7 @@ public class EnderecoFeignMapper {
 						.cidade(CidadeEntity.builder()
 								.nmCidade(feign.getLocalidade())
 								.estado(EstadoEntity.builder()
+										.nmEstado(feign.getUf())
 										.build())
 								.build())
 						.build())

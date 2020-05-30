@@ -53,14 +53,6 @@ public class EnderecoTable {
 	
 	@JsonBackReference
 	@OneToMany(mappedBy="endereco")
-	private List<ProfissionalTable> profissionais;
-	
-//	@JsonBackReference
-//	@OneToMany(mappedBy="endereco")
-//	private List<AlunoTable> alunos;
-//	
-//	@JsonBackReference
-//	@OneToMany(mappedBy="endereco", cascade=CascadeType.ALL)
-//	private List<FuncionarioTable> funcionarios;	
+	private List<ProfissionalTable> profissionais;	
 	
 }
