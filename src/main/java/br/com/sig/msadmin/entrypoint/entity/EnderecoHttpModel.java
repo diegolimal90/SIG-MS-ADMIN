@@ -17,16 +17,23 @@ public class EnderecoHttpModel {
 	
 	@JsonProperty("tipo_logradouro")
 	private String tpLogradouro;
+
 	@JsonProperty("nome_logradouro")
 	private String nmLogradouro;
+
 	@JsonProperty("complemento")
 	private String dsComplemento;
+
 	@JsonProperty("cep")
 	private String nrCep;
+
 	@JsonProperty("numero")
 	private String dsNumero;
+
 	private String bairro;
+
 	private String cidade;
+	
 	private String estado;
 	
 }

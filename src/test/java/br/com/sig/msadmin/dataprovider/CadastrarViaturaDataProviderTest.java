@@ -27,7 +27,7 @@ public class CadastrarViaturaDataProviderTest {
     private Date date = new Date();
 
     private ViaturaEntity viatura = ViaturaEntity.builder()
-    										.id_viatura(1L)
+    									//	.id_viatura(1L)
     										.ano_viatura(2010)
     										.cd_placa_viatura("API-7777")
     										.ds_fabricante("Ford")
@@ -50,7 +50,7 @@ public class CadastrarViaturaDataProviderTest {
     public void cadastrarViatura_success(){
         
 
-        ViaturaTable table = ViaturaTable.builder().build();
+        ViaturaTable table = ViaturaTable.builder().id(1L).build();
 
         Mockito.when(viaturaRepository.save(Mockito.any(ViaturaTable.class))).thenReturn(table);
 

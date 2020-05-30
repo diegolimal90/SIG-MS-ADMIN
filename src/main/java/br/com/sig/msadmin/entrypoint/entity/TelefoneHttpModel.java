@@ -15,5 +15,4 @@ public class TelefoneHttpModel {
     
     private String telefone;
 	
-		
 }

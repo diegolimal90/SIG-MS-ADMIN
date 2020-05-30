@@ -74,7 +74,7 @@ public class CadastrarProfissionalUseCase {
 			}
 		}
 		
-		if( !entity.getDtNasc().toString().isEmpty() && !(IdadeUtils.calcularIdade(entity.getDtNasc(), LocalDate.now()) >= 18)){
+		if( !entity.getDtNasc().toString().isEmpty() && IdadeUtils.isMaior( entity.getDtNasc() ) ){
 			throw new RuntimeException("O Profissional não é maior de 18 anos");
 		} 
 		else if( !entity.getDsEmail().isEmpty() && !EmailUtils.isValid(entity.getDsEmail()) ) {
